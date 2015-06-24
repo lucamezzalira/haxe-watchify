@@ -21,7 +21,6 @@
   },
   "devDependencies": {
     "jasmine": "^2.3.1",
-    "jasmine-node": "^1.14.5",
     "plato": "^1.5.0"
   }
 }

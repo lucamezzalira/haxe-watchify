@@ -6,6 +6,6 @@
   "description": "",
   "version": "1.0.0",
   "releasenote": "Initial release, everything is working correctly.",
-  "contributors": ["Luca"],
+  "contributors": ["Luca Mezzalira"],
   "dependencies": {}
 }
