@@ -1,9 +1,9 @@
 {
   "name": "haxe-watchify",
   "version": "1.1.0",
-  "description": "",
-  "author": "",
-  "license": "ISC",
+  "description": "watcher to build Haxe projects automatically",
+  "author": "luca mezzalira",
+  "license": "MIT",
   "dependencies": {
     "chalk": "^1.0.0",
     "chokidar": "^1.0.3",
@@ -22,5 +22,18 @@
   "devDependencies": {
     "jasmine": "^2.3.1",
     "plato": "^1.5.0"
+  },
+  "keywords":[
+    "haxe",
+    "watchify",
+    "haxe-watchify",
+    "CI",
+    "tool",
+    "build",
+    "openFL"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lucamezzalira/haxe-watchify.git"
   }
 }
