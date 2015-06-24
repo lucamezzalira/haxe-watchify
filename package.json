@@ -1,0 +1,27 @@
+{
+  "name": "haxe-watchify",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^1.0.0",
+    "chokidar": "^1.0.3",
+    "commander": "^2.8.1"
+  },
+  "scripts": {
+    "test": "jasmine spec/**/*.js && npm run static-analysis",
+    "static-analysis": "plato -r -d report src"
+  },
+  "engines": {
+    "node": ">=0.10"
+  },
+  "bin": {
+    "haxe-watchify": "src/haxe-watchify.js"
+  },
+  "devDependencies": {
+    "jasmine": "^2.3.1",
+    "jasmine-node": "^1.14.5",
+    "plato": "^1.5.0"
+  }
+}
