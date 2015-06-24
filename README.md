@@ -32,7 +32,7 @@ By default if the port it's not specified the server will start on _**port 6000*
 
 If you don't specify the compiler, by default haxe-watchify will use haxe in normal mode.
 
-haxe-watchify accepts all the command line arguments accepted by the haxe compiler, so it's completely transparent for you working with this automation tool.
+**haxe-watchify doesn't accept any other arguments, so if you need to specify build arguments please use the hxml file or the hx-watch.json file.**
 
 ### configuration file
 
