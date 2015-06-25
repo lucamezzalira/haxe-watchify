@@ -14,7 +14,7 @@ function ArgsParser(){
 function init(arguments){
   commander
   .version(packageJSON.version)
-  .option('--commander <value>', ConsoleMessages.PROGRAM_HELP_DESCR, /^(haxe|openfl)$/i, 'haxe')
+  .option('--program <value>', ConsoleMessages.PROGRAM_HELP_DESCR, /^(haxe|openfl)$/i, 'haxe')
   .option('--hxml <value>', ConsoleMessages.HXML_HELP_DESCR)
   .option('--compiler <value>', ConsoleMessages.COMPILER_HELP_DESCR, /^(server|local)$/i, 'local')
   .option('--port <value>', ConsoleMessages.PORT_HELP_DESCR)
