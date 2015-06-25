@@ -16,7 +16,7 @@ function Console(){
     fileAdded : fileAddedToProject,
     fileRemoved : fileRemovedFromProject,
     fileChanged : fileChangedInProject,
-    terminalError: execCommandError,
+    terminalError: execProgramError,
     errorServerStart: errorStartHaxeServer,
     serverStarted: serverHaxeStarted,
     configurationError: errorOnLoadingConfigurationFile,
@@ -28,7 +28,7 @@ function errorOnLoadingConfigurationFile(error){
   log(chalk.bgRed(ConsoleMessages.ERROR_LOADING_CONFIG_FILE + error));
 }
 
-function execCommandError(error){
+function execProgramError(error){
   log(chalk.red(error));
 }
 

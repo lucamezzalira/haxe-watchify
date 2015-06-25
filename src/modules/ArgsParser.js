@@ -1,4 +1,4 @@
-var program = require('commander');
+var commander = require('commander');
 var ConfigurationNotifications = require('../notifications/ConfigurationNotifications');
 var packageJSON = require('../../package.json');
 var ConfigurationVO = require('../VOs/ConfigurationVO');
@@ -12,14 +12,16 @@ function ArgsParser(){
 }
 
 function init(arguments){
-  program
+  commander
   .version(packageJSON.version)
+  .option('--commander <value>', ConsoleMessages.PROGRAM_HELP_DESCR, /^(haxe|openfl)$/i, 'haxe')
   .option('--hxml <value>', ConsoleMessages.HXML_HELP_DESCR)
   .option('--compiler <value>', ConsoleMessages.COMPILER_HELP_DESCR, /^(server|local)$/i, 'local')
   .option('--port <value>', ConsoleMessages.PORT_HELP_DESCR)
+  .option('--platforms [value]', ConsoleMessages.PLATFORMS_HELP_DESCR)
   .parse(arguments);
 
-  if(!program.hxml){
+  if(!commander.hxml){
     EventHub.emit(ConfigurationNotifications.DATA_UNAVAILABLE);
   } else {
     EventHub.emit(ConfigurationNotifications.COMPLETE, buildConfigVO());
@@ -29,10 +31,11 @@ function init(arguments){
 function buildConfigVO(){
   var data = {
     "build":{
-      "program" : "haxe",
-      "hxml" : program.hxml,
-      "compiler" : program.compiler,
-      "port" : program.port,
+      "program" :commander.program,
+      "hxml" : commander.hxml,
+      "compiler" : commander.compiler,
+      "port" : commander.port,
+      "platforms": commander.platforms,
       "params" : {}
     }
   };
