@@ -18,14 +18,21 @@ function init(arguments){
   .option('--hxml <value>', ConsoleMessages.HXML_HELP_DESCR)
   .option('--compiler <value>', ConsoleMessages.COMPILER_HELP_DESCR, /^(server|local)$/i, 'local')
   .option('--port <value>', ConsoleMessages.PORT_HELP_DESCR)
-  .option('--platforms [value]', ConsoleMessages.PLATFORMS_HELP_DESCR)
+  .option('--platforms <values>', ConsoleMessages.PLATFORMS_HELP_DESCR, splitPlatforms)
   .parse(arguments);
+
+  console.log(commander.platforms);
+  console.log(commander.program);
 
   if(!commander.hxml){
     EventHub.emit(ConfigurationNotifications.DATA_UNAVAILABLE);
   } else {
     EventHub.emit(ConfigurationNotifications.COMPLETE, buildConfigVO());
   }
+}
+
+function splitPlatforms(val) {
+  return val.split(',');
 }
 
 function buildConfigVO(){
