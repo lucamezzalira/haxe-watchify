@@ -45,10 +45,12 @@ function onFileRemove(path){
 
 function onFileChange(path){
   Console.fileChanged(path);
+  console.log("building ->", path);
   haxe.build(handleBuildResults);
 }
 
 function handleBuildResults(error, stdout, stderr){
+console.log("->", stdout, error);
   if(error){
     Console.terminalError(error.toString().split("[").pop().split("]").shift() + " - " + stderr);
     return;
@@ -59,8 +61,10 @@ function handleBuildResults(error, stdout, stderr){
 
 function launchBuild(message){
   Console.terminalMessage(NEW_LINE);
-  Console.buildSucced();
+  Console.buildStarted();
   Console.haxeBuildMessage(message);
+  Console.terminalMessage(NEW_LINE);
+  Console.buildCompleted();
 }
 
 module.exports = FilesManager;

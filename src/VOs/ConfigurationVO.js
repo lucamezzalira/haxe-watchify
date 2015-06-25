@@ -1,3 +1,4 @@
+var DEFAULT_COMPILER = "local";
 var DEFAULT_PORT = 6000;
 var configData;
 
@@ -25,7 +26,12 @@ function getHXMLFile(){
 }
 
 function getCompiler(){
-  return configData.build.compiler.toLowerCase();
+  var compiler = configData.build.compiler;
+  if(!compiler){
+    compiler = DEFAULT_COMPILER;
+  }
+
+  return compiler.toLowerCase();
 }
 
 function getServerPort(){

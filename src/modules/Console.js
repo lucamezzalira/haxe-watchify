@@ -9,7 +9,8 @@ function Console(){
   return {
     terminalMessage: genericTerminalMessage,
     haxeBuildMessage: terminalGreenMessage,
-    buildSucced: buildSuccedMessage,
+    buildStarted: buildStartedMessage,
+    buildCompleted: buildCompletedMessage,
     projectReady : haxeProjectReady,
     projectError : haxeProjectError,
     fileAdded : fileAddedToProject,
@@ -67,8 +68,12 @@ function missingParamsError(){
   log(chalk.bgRed(ConsoleMessages.MISSING_PARAMS));
 }
 
-function buildSuccedMessage(){
-  log(chalk.underline(ConsoleMessages.BUILD_COMPLETED));
+function buildStartedMessage(){
+  log(chalk.underline(ConsoleMessages.BUILD_STARTED));
+}
+
+function buildCompletedMessage(){
+  log(chalk.underline(ConsoleMessages.BUILD_FINISHED));
 }
 
 function terminalGreenMessage(message){

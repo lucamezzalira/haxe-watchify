@@ -1,6 +1,8 @@
 # Haxe-watchify
 
-Haxe-watchify is a command line daemon that check any changes in your Haxe project of files with extension _.hx_, _.hxml_ or _.nmml_ and run the build automatically in background.
+Haxe-watchify is a command line daemon that check any files changes in your Haxe project and run the build automatically in background.
+The files watched are with extension _.hx_, _.hxml_ or _.nmml_.
+Currently haxe-watchify is compatible with _Haxe 3_ and above versions.
 
 ## How to install
 In order to install haxe-watchify you just need to install from NPM as global package:
@@ -93,7 +95,7 @@ if you want to collaborate to the project or if you'd like a new feature, please
 
 ## Backlog
 
-. _TODO:_ openFL compatibility
+. _TODO:_ openFL compatibility  
 . _TODO:_ decode haxe-watchify errors  
 . _TODO:_ add check on other resources (json, images, ...)  
 . _TODO:_ deploy on haxelib  
