@@ -1,5 +1,6 @@
 var exec = require('child_process').exec;
 var Console = require('./Console');
+var Array2Iterator = require("../utils/Array2Iterator");
 
 var TEST_COMMAND = "openfl test";
 var BUILD_COMMAND = "openfl build";
@@ -8,7 +9,7 @@ var configVO, compiler, platforms;
 function OpenFLCompiler(configuration){
   configVO = configuration;
   compiler = BUILD_COMMAND;
-  platforms = useAsIterator(configVO.getPlatforms());
+  platforms = new Array2Iterator(configVO.getPlatforms());
 
   return{
     build: launchBuild
@@ -16,6 +17,7 @@ function OpenFLCompiler(configuration){
 }
 
 function launchBuild(callback){
+  platforms.reset();
   checkPlatformAndBuild();
 }
 
@@ -40,21 +42,6 @@ function launchBuildPerPlatform(platform){
 
 function getBuildCommand(id){
   return  compiler + " " + platforms[id] + " ";
-}
-
-//TODO: EXTRACT ME PLEASE!!!!
-function useAsIterator(array){
-    var nextIndex = 0;
-
-    return {
-       next: function(){
-          return nextIndex < array.length ? array[nextIndex++] : null;
-       }
-
-       reset: function(){
-         nextIndex = 0;
-       }
-    }
 }
 
 module.exports = OpenFLCompiler;
