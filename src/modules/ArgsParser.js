@@ -21,9 +21,6 @@ function init(arguments){
   .option('--platforms <values>', ConsoleMessages.PLATFORMS_HELP_DESCR, splitPlatforms)
   .parse(arguments);
 
-  console.log(commander.platforms);
-  console.log(commander.program);
-
   if(!commander.hxml){
     EventHub.emit(ConfigurationNotifications.DATA_UNAVAILABLE);
   } else {

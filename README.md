@@ -95,6 +95,7 @@ if you want to collaborate to the project or if you'd like a new feature, please
 
 ## Backlog
 
+. _TODO:_ abstraction compiler modules  
 . _TODO:_ openFL compatibility  
 . _TODO:_ decode haxe-watchify errors  
 . _TODO:_ add check on other resources (json, images, ...)  
