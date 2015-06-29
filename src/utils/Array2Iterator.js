@@ -6,16 +6,21 @@ function Array2Iterator(array){
 
   return{
     next: nextElement,
-    reset: resetIndex
+    reset: resetIndex,
+    hasNext: hasNextValue
   }
 }
 
 function nextElement(){
-    return nextIndex < originalArray.length ? originalArray[nextIndex++] : null;
+    return hasNextValue() ? originalArray[nextIndex++] : null;
 }
 
 function resetIndex(){
   nextIndex = 0;
+}
+
+function hasNextValue(){
+  return nextIndex < originalArray.length;
 }
 
 module.exports = Array2Iterator;
