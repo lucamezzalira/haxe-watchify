@@ -106,9 +106,10 @@ if you want collaborate to the project or if you'd like a new feature, please [d
 
 ## Tech Debt
 
-. _TODO:_ unit test + setup CI build  
+. _TODO:_ unit test
+. _TODO:_ setup CI build  
+. _TODO:_ refactor Console module  
 . _TODO:_ abstract compiler modules  
-. _TODO:_ refactor Console module
 . _TODO:_ name refactor WatcherNotification in WatcherNotifications
 
 
