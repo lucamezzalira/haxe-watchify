@@ -10,7 +10,7 @@ module.exports = {
   ERROR_LOADING_CONFIG_FILE: "error loading hx-watch.json: ",
   ERROR_START_SERVER: "Impossible to start haxe in server mode, please change the port number",
   PROGRAM_HELP_DESCR: "set the tool to build your project, the parameter could be \'haxe\' or \'openfl\'. The defualt value is \'haxe\'",
-  PLATFORMS_HELP_DESCR: "set the platform to build OpenFL project",
+  PLATFORMS_HELP_DESCR: "set the platform to build OpenFL project separated by , (e.g.: flash,html5)",
   HXML_HELP_DESCR: "set the hxml file to use for the build",
   PORT_HELP_DESCR: "set the port number. By default port is 6000",
   MISSING_PARAMS: "missing hxml file or parameters to build the project",

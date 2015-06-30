@@ -37,7 +37,7 @@ function onConfigReady(configuration){
 }
 
 function setupCompiler(configuration){
-  if(program === "haxe"){
+  if(configuration.getProgram() === "haxe"){
     compiler = new HaxeCompiler(configuration);
   } else {
     compiler = new OpenFLCompiler(configuration);

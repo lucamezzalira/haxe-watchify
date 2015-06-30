@@ -1,4 +1,5 @@
 var exec = require('child_process').exec;
+var EventHub = require('../notifications/EventHub');
 var Console = require('./Console');
 var FilesManagerNotifications = require("../notifications/FilesManagerNotifications");
 

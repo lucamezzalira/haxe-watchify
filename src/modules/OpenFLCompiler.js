@@ -1,4 +1,5 @@
 var exec = require('child_process').exec;
+var EventHub = require('../notifications/EventHub');
 var Console = require('./Console');
 var Array2Iterator = require("../utils/Array2Iterator");
 var FilesManagerNotifications = require("../notifications/FilesManagerNotifications");
