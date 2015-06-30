@@ -20,8 +20,13 @@ function Console(){
     errorServerStart: errorStartHaxeServer,
     serverStarted: serverHaxeStarted,
     configurationError: errorOnLoadingConfigurationFile,
-    missingParametersError: missingParamsError
+    missingParametersError: missingParamsError,
+    openflBuildMessage : openflBuildMessage
   }
+}
+
+function openflBuildMessage(platform){
+  log(chalk.green(platform + " " + ConsoleMessages.BUILD_OPENFL_FINISHED));
 }
 
 function errorOnLoadingConfigurationFile(error){

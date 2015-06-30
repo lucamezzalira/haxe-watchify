@@ -6,8 +6,13 @@ var Watcher = require('./modules/Watcher');
 var FilesManager = require('./modules/FilesManager');
 var EventHub = require('./notifications/EventHub');
 var ConfigurationNotifications = require('./notifications/ConfigurationNotifications');
+var FilesManagerNotifications = require('./notifications/FilesManagerNotifications');
 var ConfigurationLoader = require('./modules/ConfigurationLoader');
 var ArgsParser = require('./modules/ArgsParser');
+var HaxeCompiler = require('./modules/HaxeCompiler');
+var OpenFLCompiler = require('./modules/OpenFLCompiler');
+
+var compiler;
 
 function init(){
   loadConfig();
@@ -26,8 +31,17 @@ function onArgsUnavailable(){
 }
 
 function onConfigReady(configuration){
-  createFilesManager(configuration);
-  createWatcher();
+  setupCompiler(configuration);
+  createFilesManager();
+  createWatcher(configuration.getProgram());
+}
+
+function setupCompiler(configuration){
+  if(program === "haxe"){
+    compiler = new HaxeCompiler(configuration);
+  } else {
+    compiler = new OpenFLCompiler(configuration);
+  }
 }
 
 function createArgsParser(){
@@ -36,12 +50,12 @@ function createArgsParser(){
 }
 
 function createFilesManager(configuration){
-  var filesManager = new FilesManager(configuration);
+  var filesManager = new FilesManager();
   filesManager.init();
 }
 
-function createWatcher(configuration){
-  var watcher = new Watcher(configuration);
+function createWatcher(program){
+  var watcher = new Watcher(program);
   watcher.init();
 }
 

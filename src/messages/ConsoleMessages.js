@@ -5,6 +5,7 @@ module.exports = {
   FILE_CHANGED: "file changed:",
   FILE_ADDED: "file added:",
   BUILD_STARTED: "building:",
+  BUILD_OPENFL_FINISHED: "platform ready",
   BUILD_FINISHED: "build complete!",
   ERROR_LOADING_CONFIG_FILE: "error loading hx-watch.json: ",
   ERROR_START_SERVER: "Impossible to start haxe in server mode, please change the port number",

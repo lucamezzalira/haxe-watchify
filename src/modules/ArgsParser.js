@@ -21,7 +21,7 @@ function init(arguments){
   .option('--platforms <values>', ConsoleMessages.PLATFORMS_HELP_DESCR, splitPlatforms)
   .parse(arguments);
 
-  if(!commander.hxml){
+  if(!isHaxeBuildDefined() && !isOpenFLBuildDefined()){
     EventHub.emit(ConfigurationNotifications.DATA_UNAVAILABLE);
   } else {
     EventHub.emit(ConfigurationNotifications.COMPLETE, buildConfigVO());
@@ -50,5 +50,12 @@ function buildConfigVO(){
   return configVO;
 }
 
+function isHaxeBuildDefined(){
+  return commander.program === "haxe" && commander.hxml;
+}
+
+function isOpenFLBuildDefined(){
+  return commander.program === "openfl" && commander.platforms;
+}
 
 module.exports = ArgsParser;

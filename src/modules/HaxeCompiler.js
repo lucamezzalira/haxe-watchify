@@ -1,19 +1,18 @@
 var exec = require('child_process').exec;
 var Console = require('./Console');
+var FilesManagerNotifications = require("../notifications/FilesManagerNotifications");
 
 var LOCAL_COMPILER = "haxe";
 var SERVER_COMPILER = "haxe --connect";
 var START_SERVER = "haxe --wait";
+var NEW_LINE = "";
 var configVO, compiler;
 
 function HaxeCompiler(configuration){
   configVO = configuration;
-
   setCompiler();
 
-  return{
-    build: launchBuild
-  }
+  EventHub.on(FilesManagerNotifications.LAUNCH_BUILD, launchBuild);
 }
 
 function setCompiler(){
@@ -36,7 +35,7 @@ function onServerStart(error){
     Console.serverStarted();
 }
 
-function launchBuild(callback){
+function launchBuild(){
   var cmdToExec = getBuildCommand();
 
   if(configVO.getCmd()){
@@ -48,7 +47,24 @@ function launchBuild(callback){
     process.exit(1);
   }
 
-  exec(cmdToExec, callback);
+  exec(cmdToExec, handleBuildResults);
+}
+
+function handleBuildResults(error, stdout, stderr){
+  if(error){
+    Console.terminalError(error.toString().split("[").pop().split("]").shift() + " - " + stderr);
+    return;
+  }
+
+  showBuildOutput(stdout);
+}
+
+function showBuildOutput(message){
+  Console.terminalMessage(NEW_LINE);
+  Console.buildStarted();
+  Console.haxeBuildMessage(message);
+  Console.terminalMessage(NEW_LINE);
+  Console.buildCompleted();
 }
 
 function getBuildCommand(){

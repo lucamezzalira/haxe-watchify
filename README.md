@@ -91,17 +91,26 @@ haxe-watchify --help
 
 ## Contacts and suggestions
 
-if you want to collaborate to the project or if you'd like a new feature, please [drop me a line](mailto:mezzalab@gmail.com) !
+To report a bug please use the issues section on Github.
+
+if you want collaborate to the project or if you'd like a new feature, please [drop me a line](mailto:mezzalab@gmail.com) !
 
 ## Backlog
 
-. _TODO:_ abstraction compiler modules  
-. _TODO:_ openFL compatibility  
-. _TODO:_ decode haxe-watchify errors  
-. _TODO:_ add check on other resources (json, images, ...)  
-. _TODO:_ deploy on haxelib  
-. _TODO:_ pre-build and post-build  
-. _TODO:_ refactor Console and HaxeCompiler module  
+. _TODO:_ OPENFL: update documentation
+
+. _TODO:_ GENERAL: pre-build and post-build objects in JSON file  
+. _TODO:_ GENERAL: better explanation on haxe-watchify error output  
+. _TODO:_ GENERAL: add check on other resources (json, images, ...)  
+. _TODO:_ GENERAL: deploy on haxelib  
+
+## Tech Debt
+
+. _TODO:_ unit test + setup CI build  
+. _TODO:_ abstract compiler modules  
+. _TODO:_ refactor Console module
+. _TODO:_ name refactor WatcherNotification in WatcherNotifications
+
 
 ## Ackwnoledgements
 
