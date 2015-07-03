@@ -11,6 +11,7 @@ var ConfigurationLoader = require('./modules/ConfigurationLoader');
 var ArgsParser = require('./modules/ArgsParser');
 var HaxeCompiler = require('./modules/HaxeCompiler');
 var OpenFLCompiler = require('./modules/OpenFLCompiler');
+var Console = require('./modules/Console');
 
 var compiler;
 
@@ -20,12 +21,17 @@ function init(){
 
 function loadConfig(){
   EventHub.on(ConfigurationNotifications.COMPLETE, onConfigReady);
-  EventHub.on(ConfigurationNotifications.DATA_UNAVAILABLE, onArgsUnavailable);
+  EventHub.on(ConfigurationNotifications.DATA_UNAVAILABLE, onDataUnavailable);
 
   createArgsParser();
 }
 
-function onArgsUnavailable(){
+function onDataUnavailable(fromModule){
+
+  if(fromModule === "fromConfigLoader"){
+    Console.missingParamsAndConfigFile();
+    process.exit(1);
+  }
   var config = new ConfigurationLoader();
   config.load();
 }

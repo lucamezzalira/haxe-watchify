@@ -8,6 +8,7 @@ module.exports = {
   BUILD_OPENFL_FINISHED: "platform ready",
   BUILD_FINISHED: "build complete!",
   ERROR_LOADING_CONFIG_FILE: "error loading hx-watch.json: ",
+  ERROR_LAUNCHING_TOOL: "ERROR: it's missing hx-watch.json and you didn't add the right parameters when you launch haxe-watchify!",
   ERROR_START_SERVER: "Impossible to start haxe in server mode, please change the port number",
   PROGRAM_HELP_DESCR: "set the tool to build your project, the parameter could be \'haxe\' or \'openfl\'. The defualt value is \'haxe\'",
   PLATFORMS_HELP_DESCR: "set the platform to build OpenFL project separated by , (e.g.: flash,html5)",

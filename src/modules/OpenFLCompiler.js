@@ -7,6 +7,7 @@ var FilesManagerNotifications = require("../notifications/FilesManagerNotificati
 var TEST_COMMAND = "haxelib run openfl test";
 var BUILD_COMMAND = "haxelib run openfl build";
 var NEW_LINE = "";
+var TIMER_ID = "build-time";
 var configVO, compiler, platforms, platformToBuild;
 
 function OpenFLCompiler(configuration){
@@ -19,7 +20,7 @@ function OpenFLCompiler(configuration){
 
 function launchBuild(){
   platforms.reset();
-
+  Console.startTimer(TIMER_ID);
   Console.terminalMessage(NEW_LINE);
   Console.buildStarted();
 
@@ -29,6 +30,7 @@ function launchBuild(){
 function checkPlatformAndBuild(){
   if(!platforms.hasNext()){
     Console.buildCompleted();
+    Console.stopTimer(TIMER_ID);
     return;
   }
 

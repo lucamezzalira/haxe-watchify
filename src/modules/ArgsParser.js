@@ -7,11 +7,11 @@ var ConsoleMessages = require('../messages/ConsoleMessages');
 
 function ArgsParser(){
   return{
-    parse: init
+    parse: parse
   }
 }
 
-function init(arguments){
+function parse(arguments){
   commander
   .version(packageJSON.version)
   .option('--program <value>', ConsoleMessages.PROGRAM_HELP_DESCR, /^(haxe|openfl)$/i, 'haxe')
@@ -22,7 +22,7 @@ function init(arguments){
   .parse(arguments);
 
   if(!isHaxeBuildDefined() && !isOpenFLBuildDefined()){
-    EventHub.emit(ConfigurationNotifications.DATA_UNAVAILABLE);
+    EventHub.emit(ConfigurationNotifications.DATA_UNAVAILABLE, "fromArgsParser");
   } else {
     EventHub.emit(ConfigurationNotifications.COMPLETE, buildConfigVO());
   }
@@ -55,7 +55,7 @@ function isHaxeBuildDefined(){
 }
 
 function isOpenFLBuildDefined(){
-  return commander.program === "openfl" && commander.platforms;
+  return commander.program === "openfl" && commander.platforms !== undefined;
 }
 
 module.exports = ArgsParser;

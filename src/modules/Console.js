@@ -21,8 +21,23 @@ function Console(){
     serverStarted: serverHaxeStarted,
     configurationError: errorOnLoadingConfigurationFile,
     missingParametersError: missingParamsError,
-    openflBuildMessage : openflBuildMessage
+    openflBuildMessage : openflBuildMessage,
+    missingParamsAndConfigFile: missingParamsAndConfigFile,
+    startTimer: startTimer,
+    stopTimer: stopTimer
   }
+}
+
+function startTimer(id){
+  console.time(id);
+}
+
+function stopTimer(id){
+  console.timeEnd(id);
+}
+
+function missingParamsAndConfigFile(){
+  log(chalk.bgRed(ConsoleMessages.ERROR_LAUNCHING_TOOL));
 }
 
 function openflBuildMessage(platform){
