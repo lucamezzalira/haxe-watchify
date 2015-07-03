@@ -152,7 +152,6 @@ if you want collaborate to the project or if you'd like a new feature, please [d
 
 . _OPENFL_: add command params (build|test)  
 . _GENERAL_: pre-build and post-build objects in JSON file  
-. _GENERAL_: better explanation on haxe-watchify error output  
 . _GENERAL_: add check on other resources (json, images, ...)  
 . _GENERAL_: deploy on haxelib  
 
