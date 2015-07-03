@@ -1,7 +1,7 @@
 {
   "name": "haxe-watchify",
   "version": "1.1.0",
-  "description": "tool to build your Haxe and OpenFL projects in background anytime a class is changed",
+  "description": "automatic build tool for your Haxe and OpenFL projects. It monitors the changes in your files and runs the build of your Haxe and OpenFL projects",
   "author": "luca mezzalira",
   "license": "MIT",
   "dependencies": {
