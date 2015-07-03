@@ -17,6 +17,11 @@ function ConfigurationLoader(){
 }
 
 function loadConfigurationFile(){
+  if(!fs.existsSync(file)){
+    EventHub.emit(ConfigurationNotifications.DATA_UNAVAILABLE, "fromConfigLoader");
+    return;
+  }
+
   fs.readFile(file, 'utf8', handleLoadResults);
 }
 

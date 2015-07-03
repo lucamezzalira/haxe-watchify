@@ -9,7 +9,9 @@ function ConfigurationVO(){
     getHXML: getHXMLFile,
     getParameters: getParams,
     getPort: getServerPort,
-    getCmd: getCmdCommand
+    getCmd: getCmdCommand,
+    getProgram: getProgramDefined,
+    getPlatforms: getOpenFLPlatforms
   }
 }
 
@@ -42,6 +44,14 @@ function getServerPort(){
   }
 
   return port;
+}
+
+function getOpenFLPlatforms(){
+  return configData.build.platforms;
+}
+
+function getProgramDefined(){
+  return configData.build.program;
 }
 
 function setRawData(data){

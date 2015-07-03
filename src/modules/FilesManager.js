@@ -1,14 +1,12 @@
 var EventHub = require('../notifications/EventHub');
 var ConsoleMessages = require('../messages/ConsoleMessages');
 var WatcherNotification = require('../notifications/WatcherNotification');
-var HaxeCompiler = require('./HaxeCompiler');
+var FilesManagerNotifications = require('../notifications/FilesManagerNotifications');
 var Console = require('./Console');
 
-var NEW_LINE = "";
-var haxe;
+var program;
 
-function FilesManager(configuration){
-  haxe = new HaxeCompiler(configuration);
+function FilesManager(){
 
   return{
     init: initialise
@@ -45,26 +43,7 @@ function onFileRemove(path){
 
 function onFileChange(path){
   Console.fileChanged(path);
-  console.log("building ->", path);
-  haxe.build(handleBuildResults);
-}
-
-function handleBuildResults(error, stdout, stderr){
-console.log("->", stdout, error);
-  if(error){
-    Console.terminalError(error.toString().split("[").pop().split("]").shift() + " - " + stderr);
-    return;
-  }
-
-  launchBuild(stdout);
-}
-
-function launchBuild(message){
-  Console.terminalMessage(NEW_LINE);
-  Console.buildStarted();
-  Console.haxeBuildMessage(message);
-  Console.terminalMessage(NEW_LINE);
-  Console.buildCompleted();
+  EventHub.emit(FilesManagerNotifications.LAUNCH_BUILD);
 }
 
 module.exports = FilesManager;

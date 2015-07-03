@@ -2,12 +2,15 @@ var chokidar = require('chokidar');
 var EventHub = require('../notifications/EventHub');
 var WatcherNotification = require('../notifications/WatcherNotification');
 
-var HAXE_FILES_GLOBAL_PATH = './**/*.(hx|hxml|nmml)';
+var HAXE_FILES_GLOBAL_PATH = ['./**/*.(hx|hxml|nmml)', '!Export/**/*.(hx|hxml|nmml)'];
 var DEFAULT_INTERVAL = 500;
 
-var watcher;
+var watcher, isOpenFL;
 
-function Watcher(){
+function Watcher(program){
+
+  isOpenFL = (program === "openfl") ? true : false;
+
   return{
     init: initialise
   }
@@ -20,7 +23,15 @@ function initialise(){
     interval: DEFAULT_INTERVAL,
   });
 
+  if(isOpenFL){
+    addProjectXML();
+  }
+
   addWatcherListeners();
+}
+
+function addProjectXML(){
+  watcher.add("./project.xml");
 }
 
 function addWatcherListeners(){

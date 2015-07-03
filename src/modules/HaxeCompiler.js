@@ -1,19 +1,20 @@
 var exec = require('child_process').exec;
+var EventHub = require('../notifications/EventHub');
 var Console = require('./Console');
+var FilesManagerNotifications = require("../notifications/FilesManagerNotifications");
 
 var LOCAL_COMPILER = "haxe";
 var SERVER_COMPILER = "haxe --connect";
 var START_SERVER = "haxe --wait";
+var NEW_LINE = "";
+var TIMER_ID = "build-time";
 var configVO, compiler;
 
 function HaxeCompiler(configuration){
   configVO = configuration;
-
   setCompiler();
 
-  return{
-    build: launchBuild
-  }
+  EventHub.on(FilesManagerNotifications.LAUNCH_BUILD, launchBuild);
 }
 
 function setCompiler(){
@@ -36,7 +37,8 @@ function onServerStart(error){
     Console.serverStarted();
 }
 
-function launchBuild(callback){
+function launchBuild(){
+  Console.startTimer(TIMER_ID);
   var cmdToExec = getBuildCommand();
 
   if(configVO.getCmd()){
@@ -48,7 +50,27 @@ function launchBuild(callback){
     process.exit(1);
   }
 
-  exec(cmdToExec, callback);
+  exec(cmdToExec, handleBuildResults);
+}
+
+function handleBuildResults(error, stdout, stderr){
+  if(error){
+    Console.terminalError(error.toString().split("[").pop().split("]").shift() + " - " + stderr);
+    Console.stopTimer(TIMER_ID);
+    return;
+  }
+
+  showBuildOutput(stdout);
+  Console.stopTimer(TIMER_ID);
+}
+
+function showBuildOutput(message){
+  Console.terminalMessage(NEW_LINE);
+  Console.buildStarted();
+  Console.haxeBuildMessage(message);
+  Console.terminalMessage(NEW_LINE);
+  Console.buildCompleted();
+  Console.terminalMessage(NEW_LINE);
 }
 
 function getBuildCommand(){

@@ -16,19 +16,39 @@ function Console(){
     fileAdded : fileAddedToProject,
     fileRemoved : fileRemovedFromProject,
     fileChanged : fileChangedInProject,
-    terminalError: execCommandError,
+    terminalError: execProgramError,
     errorServerStart: errorStartHaxeServer,
     serverStarted: serverHaxeStarted,
     configurationError: errorOnLoadingConfigurationFile,
-    missingParametersError: missingParamsError
+    missingParametersError: missingParamsError,
+    openflBuildMessage : openflBuildMessage,
+    missingParamsAndConfigFile: missingParamsAndConfigFile,
+    startTimer: startTimer,
+    stopTimer: stopTimer
   }
+}
+
+function startTimer(id){
+  console.time(id);
+}
+
+function stopTimer(id){
+  console.timeEnd(id);
+}
+
+function missingParamsAndConfigFile(){
+  log(chalk.bgRed(ConsoleMessages.ERROR_LAUNCHING_TOOL));
+}
+
+function openflBuildMessage(platform){
+  log(chalk.green(platform + " " + ConsoleMessages.BUILD_OPENFL_FINISHED));
 }
 
 function errorOnLoadingConfigurationFile(error){
   log(chalk.bgRed(ConsoleMessages.ERROR_LOADING_CONFIG_FILE + error));
 }
 
-function execCommandError(error){
+function execProgramError(error){
   log(chalk.red(error));
 }
 
