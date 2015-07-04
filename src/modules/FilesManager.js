@@ -1,6 +1,6 @@
 var EventHub = require('../notifications/EventHub');
 var ConsoleMessages = require('../messages/ConsoleMessages');
-var WatcherNotifications = require('../notifications/WatcherNotificationss');
+var WatcherNotifications = require('../notifications/WatcherNotifications');
 var FilesManagerNotifications = require('../notifications/FilesManagerNotifications');
 var Console = require('./Console');
 

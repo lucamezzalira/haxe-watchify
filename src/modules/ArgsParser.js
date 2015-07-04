@@ -8,10 +8,15 @@ var ConsoleMessages = require('../messages/ConsoleMessages');
 function ArgsParser(){
   return{
     parse: parse
-  }
+  };
 }
 
-function parse(arguments){
+function parse(args){
+  var argsToParse = args;
+  if(!argsToParse){
+    argsToParse = "";
+  }
+
   commander
   .version(packageJSON.version)
   .option('--program <value>', ConsoleMessages.PROGRAM_HELP_DESCR, /^(haxe|openfl)$/i, 'haxe')
@@ -19,7 +24,7 @@ function parse(arguments){
   .option('--compiler <value>', ConsoleMessages.COMPILER_HELP_DESCR, /^(server|local)$/i, 'local')
   .option('--port <value>', ConsoleMessages.PORT_HELP_DESCR)
   .option('--platforms <values>', ConsoleMessages.PLATFORMS_HELP_DESCR, splitPlatforms)
-  .parse(arguments);
+  .parse(argsToParse);
 
   if(!isHaxeBuildDefined() && !isOpenFLBuildDefined()){
     EventHub.emit(ConfigurationNotifications.DATA_UNAVAILABLE, "fromArgsParser");
@@ -29,7 +34,7 @@ function parse(arguments){
 }
 
 function splitPlatforms(val) {
-  return val.split(',');
+  return val.toString().split(',');
 }
 
 function buildConfigVO(){
@@ -51,7 +56,7 @@ function buildConfigVO(){
 }
 
 function isHaxeBuildDefined(){
-  return commander.program === "haxe" && commander.hxml;
+  return commander.program === "haxe" && commander.hxml !== undefined;
 }
 
 function isOpenFLBuildDefined(){
