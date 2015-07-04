@@ -1,6 +1,6 @@
 var chokidar = require('chokidar');
 var EventHub = require('../notifications/EventHub');
-var WatcherNotification = require('../notifications/WatcherNotification');
+var WatcherNotifications = require('../notifications/WatcherNotifications');
 
 var HAXE_FILES_GLOBAL_PATH = ['./**/*.(hx|hxml|nmml)', '!Export/**/*.(hx|hxml|nmml)'];
 var DEFAULT_INTERVAL = 500;
@@ -46,26 +46,26 @@ function onReady(){
     .on('change', onChangeFile)
     .on('unlink', onUnlinkFile);
 
-  EventHub.emit(WatcherNotification.READY);
+  EventHub.emit(WatcherNotifications.READY);
 }
 
 function onAddFile(path){
   watcher.add(path);
-  EventHub.emit(WatcherNotification.FILE_ADDED, path);
+  EventHub.emit(WatcherNotifications.FILE_ADDED, path);
 }
 
 function onChangeFile(path){
-  EventHub.emit(WatcherNotification.FILE_CHANGED, path);
+  EventHub.emit(WatcherNotifications.FILE_CHANGED, path);
 }
 
 function onUnlinkFile(path){
   watcher.unwatch(path);
-  EventHub.emit(WatcherNotification.FILE_REMOVED, path);
+  EventHub.emit(WatcherNotifications.FILE_REMOVED, path);
 }
 
 function onError(error){
   watcher.close();
-  EventHub.emit(WatcherNotification.ERROR, error);
+  EventHub.emit(WatcherNotifications.ERROR, error);
 }
 
 module.exports = Watcher;

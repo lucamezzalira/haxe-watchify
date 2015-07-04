@@ -1,6 +1,6 @@
 var EventHub = require('../notifications/EventHub');
 var ConsoleMessages = require('../messages/ConsoleMessages');
-var WatcherNotification = require('../notifications/WatcherNotification');
+var WatcherNotifications = require('../notifications/WatcherNotificationss');
 var FilesManagerNotifications = require('../notifications/FilesManagerNotifications');
 var Console = require('./Console');
 
@@ -18,11 +18,11 @@ function initialise(){
 }
 
 function addFilesNotificationListeners(){
-  EventHub.on(WatcherNotification.READY, onReady);
-  EventHub.on(WatcherNotification.ERROR, onError);
-  EventHub.on(WatcherNotification.FILE_CHANGED, onFileChange);
-  EventHub.on(WatcherNotification.FILE_ADDED, onFileAdd);
-  EventHub.on(WatcherNotification.FILE_REMOVED, onFileRemove);
+  EventHub.on(WatcherNotifications.READY, onReady);
+  EventHub.on(WatcherNotifications.ERROR, onError);
+  EventHub.on(WatcherNotifications.FILE_CHANGED, onFileChange);
+  EventHub.on(WatcherNotifications.FILE_ADDED, onFileAdd);
+  EventHub.on(WatcherNotifications.FILE_REMOVED, onFileRemove);
 }
 
 function onReady(){

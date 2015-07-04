@@ -1,6 +1,10 @@
 var originalArray, nextIndex;
 
 function Array2Iterator(array){
+  if(!array || !Array.isArray(array)){
+    throw new TypeError("Array2Iterator needs an array argument!");
+  }
+
   nextIndex = 0;
   originalArray = array;
 

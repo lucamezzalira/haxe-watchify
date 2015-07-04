@@ -152,15 +152,14 @@ if you want collaborate to the project or if you'd like a new feature, please [d
 
 . _OPENFL_: add command params (build|test)  
 . _GENERAL_: pre-build and post-build objects in JSON file  
+. _GENERAL_: live reload JS and Flash targets  
 . _GENERAL_: add check on other resources (json, images, ...)  
 . _GENERAL_: deploy on haxelib  
 
 ## Tech Debt
 
 . _TODO:_ unit test  
-. _TODO:_ setup CI build  
 . _TODO:_ abstract compiler modules  
-. _TODO:_ name refactor WatcherNotification in WatcherNotifications
 
 ## Ackwnoledgements
 

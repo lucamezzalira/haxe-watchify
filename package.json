@@ -1,6 +1,6 @@
 {
   "name": "haxe-watchify",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "automatic build tool for your Haxe and OpenFL projects. It monitors the changes in your files and runs the build of your projects",
   "author": "luca mezzalira",
   "license": "MIT",
@@ -10,7 +10,7 @@
     "commander": "^2.8.1"
   },
   "scripts": {
-    "test": "jasmine spec/**/*.js && npm run static-analysis",
+    "test": "jasmine spec/**/*.js",
     "static-analysis": "plato -r -d report src"
   },
   "engines": {
@@ -23,7 +23,7 @@
     "jasmine": "^2.3.1",
     "plato": "^1.5.0"
   },
-  "keywords":[
+  "keywords": [
     "haxe",
     "watchify",
     "haxe-watchify",
@@ -32,7 +32,9 @@
     "utility",
     "nme",
     "build",
-    "openFL"
+    "openFL",
+    "hx",
+    "automation"
   ],
   "repository": {
     "type": "git",
