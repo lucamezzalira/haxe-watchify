@@ -162,6 +162,9 @@ if you want collaborate to the project or if you'd like a new feature, please [d
 . _TODO:_ abstract compiler modules  
 . _TODO:_ name refactor WatcherNotification in WatcherNotifications
 
+## Travis CI project status
+[![Build Status](https://travis-ci.org/lucamezzalira/haxe-watchify.svg?branch=master)](https://travis-ci.org/lucamezzalira/haxe-watchify)
+
 ## Ackwnoledgements
 
 I'd like to thanks the [TFL](http://www.tfl.gov.uk) company that gave me the opportunity to write this tool during my commuting time. :D
