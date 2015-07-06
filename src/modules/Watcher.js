@@ -21,6 +21,9 @@ function initialise(){
     ignored: /[\/\\]\./,
     persistent: true,
     interval: DEFAULT_INTERVAL,
+    followSymlinks: false,
+    ignoreInitial: true
+    //cwd: path dir to watch
   });
 
   if(isOpenFL){
@@ -37,15 +40,13 @@ function addProjectXML(){
 function addWatcherListeners(){
   watcher
     .on('error', onError)
-    .on('ready', onReady);
-}
-
-function onReady(){
-  watcher
+    .on('ready', onReady)
     .on('add', onAddFile)
     .on('change', onChangeFile)
     .on('unlink', onUnlinkFile);
+}
 
+function onReady(){
   EventHub.emit(WatcherNotifications.READY);
 }
 
