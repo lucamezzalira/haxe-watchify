@@ -11,8 +11,23 @@ function ConfigurationVO(){
     getPort: getServerPort,
     getCmd: getCmdCommand,
     getProgram: getProgramDefined,
-    getPlatforms: getOpenFLPlatforms
+    getPlatforms: getOpenFLPlatforms,
+    getBuildType: getBuildType,
+    getDistPath: getDistPath,
+    getSrcPath: getSrcPath
   }
+}
+
+function getDistPath(){
+  return configData.build.dist;
+}
+
+function getSrcPath(){
+  return configData.build.src;
+}
+
+function getBuildType(){
+  return configData.build.buildType;
 }
 
 function getCmdCommand(){

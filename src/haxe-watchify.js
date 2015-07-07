@@ -39,7 +39,7 @@ function onDataUnavailable(fromModule){
 function onConfigReady(configuration){
   setupCompiler(configuration);
   createFilesManager();
-  createWatcher(configuration.getProgram());
+  createWatcher(configuration.getProgram(), configuration.getSrcPath());
 }
 
 function setupCompiler(configuration){
@@ -60,9 +60,9 @@ function createFilesManager(configuration){
   filesManager.init();
 }
 
-function createWatcher(program){
+function createWatcher(program, src){
   var watcher = new Watcher(program);
-  watcher.init();
+  watcher.init(src);
 }
 
 init();
