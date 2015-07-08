@@ -24,8 +24,7 @@ function parse(args){
   .option('--compiler <value>', ConsoleMessages.COMPILER_HELP_DESCR, /^(server|local)$/i, 'local')
   .option('--port <value>', ConsoleMessages.PORT_HELP_DESCR)
   .option('--buildType <value>', ConsoleMessages.PROGRAM_HELP_DESCR, /^(build|test)$/i, 'build')
-  .option('--src <value>', ConsoleMessages.PROGRAM_HELP_DESCR)
-  .option('--dist <value>', ConsoleMessages.PROGRAM_HELP_DESCR)
+  .option('--src <value>', ConsoleMessages.SOURCE_FOLDER_HELP_DESCR)
   .option('--platforms <values>', ConsoleMessages.PLATFORMS_HELP_DESCR, splitPlatforms)
   .parse(argsToParse);
 
@@ -49,7 +48,6 @@ function buildConfigVO(){
       "port" : commander.port,
       "platforms": commander.platforms,
       "buildType": commander.buildType,
-      "dist": getFolderPath(commander.dist),
       "src": getFolderPath(commander.src),
       "params" : {}
     }

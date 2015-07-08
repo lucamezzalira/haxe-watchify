@@ -13,13 +13,8 @@ function ConfigurationVO(){
     getProgram: getProgramDefined,
     getPlatforms: getOpenFLPlatforms,
     getBuildType: getBuildType,
-    getDistPath: getDistPath,
     getSrcPath: getSrcPath
   }
-}
-
-function getDistPath(){
-  return configData.build.dist;
 }
 
 function getSrcPath(){
