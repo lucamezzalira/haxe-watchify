@@ -15,6 +15,7 @@ module.exports = {
   HXML_HELP_DESCR: "set the hxml file to use for the build",
   PORT_HELP_DESCR: "set the port number. By default port is 6000",
   SOURCE_FOLDER_HELP_DESCR: "set the Haxe classes source folder. The default value is the folder where you run haxe-watchify",
+  BUILD_TYPE_HELP_DESCR: "set the command to use on OpenFL targets: build or test. The defualt value is \'build\'",
   MISSING_PARAMS: "missing hxml file or parameters to build the project",
   COMPILER_HELP_DESCR: "set \'server\' to use the completion server. The default value is \'local\'",
   WATCHER_ERROR: "unfortunately there was an error with haxe-watchify, please restart"
