@@ -23,7 +23,7 @@ function parse(args){
   .option('--hxml <value>', ConsoleMessages.HXML_HELP_DESCR)
   .option('--compiler <value>', ConsoleMessages.COMPILER_HELP_DESCR, /^(server|local)$/i, 'local')
   .option('--port <value>', ConsoleMessages.PORT_HELP_DESCR)
-  .option('--buildType <value>', ConsoleMessages.PROGRAM_HELP_DESCR, /^(build|test)$/i, 'build')
+  .option('--buildType <value>', ConsoleMessages.BUILD_TYPE_HELP_DESCR, /^(build|test)$/i, 'build')
   .option('--src <value>', ConsoleMessages.SOURCE_FOLDER_HELP_DESCR)
   .option('--platforms <values>', ConsoleMessages.PLATFORMS_HELP_DESCR, splitPlatforms)
   .parse(argsToParse);
