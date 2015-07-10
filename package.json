@@ -11,7 +11,8 @@
   },
   "scripts": {
     "test": "jasmine spec/**/*.js",
-    "static-analysis": "plato -r -d report src"
+    "static-analysis": "plato -r -d report src",
+    "gen-change-log" : "github_changelog_generator lucamezzalira/haxe-watchify"
   },
   "engines": {
     "node": ">=0.10"
