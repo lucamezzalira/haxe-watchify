@@ -7,7 +7,8 @@
   "dependencies": {
     "chalk": "^1.0.0",
     "chokidar": "^1.0.3",
-    "commander": "^2.8.1"
+    "commander": "^2.8.1",
+    "livereloadx": "^0.3.8"
   },
   "scripts": {
     "test": "jasmine spec/**/*.js",

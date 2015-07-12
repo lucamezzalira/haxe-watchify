@@ -4,15 +4,14 @@ var Console = require('./Console');
 var Array2Iterator = require("../utils/Array2Iterator");
 var FilesManagerNotifications = require("../notifications/FilesManagerNotifications");
 
-var TEST_COMMAND = "haxelib run openfl test";
-var BUILD_COMMAND = "haxelib run openfl build";
+var BASE_BUILD_COMMAND = "haxelib run openfl";
 var NEW_LINE = "";
 var TIMER_ID = "build-time";
 var configVO, compiler, platforms, platformToBuild;
 
 function OpenFLCompiler(configuration){
   configVO = configuration;
-  compiler = BUILD_COMMAND;
+  compiler = BASE_BUILD_COMMAND + " " + configVO.getBuildType();
   platforms = new Array2Iterator(configVO.getPlatforms());
 
   EventHub.on(FilesManagerNotifications.LAUNCH_BUILD, launchBuild);
@@ -40,6 +39,7 @@ function checkPlatformAndBuild(){
 }
 
 function launchBuildPerPlatform(cmd){
+  // nn arriva la fine della build - custom live reload????
   exec(cmd, handleBuildResults);
 }
 
@@ -59,6 +59,7 @@ function showBuildOutput(platform){
 }
 
 function getBuildCommand(platform){
+  console.log(compiler, platform);
   return  compiler + " " + platform + " ";
 }
 

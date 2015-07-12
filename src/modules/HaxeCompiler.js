@@ -67,8 +67,12 @@ function handleBuildResults(error, stdout, stderr){
 function showBuildOutput(message){
   Console.terminalMessage(NEW_LINE);
   Console.buildStarted();
-  Console.haxeBuildMessage(message);
-  Console.terminalMessage(NEW_LINE);
+
+  if(message !== ""){
+    Console.haxeBuildMessage(message);
+    Console.terminalMessage(NEW_LINE);
+  }
+
   Console.buildCompleted();
   Console.terminalMessage(NEW_LINE);
 }

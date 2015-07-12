@@ -150,12 +150,19 @@ if you want collaborate to the project or if you'd like a new feature, please [d
 
 ## Backlog
 
-. _OPENFL_: add command params (build|test)  
-. _GENERAL_: specify watching directory  
-. _GENERAL_: live reload JS and Flash targets  
-. _GENERAL_: pre-build and post-build objects in JSON file  
+. _GENERAL_: live reload JS targets
+. _GENERAL_: live reload Flash targets  
+. _GENERAL_: update documentation!  
+. _GENERAL_: add plugins strategy for JSON file  
+. _GENERAL_: add checkstyle plugin  
+. _GENERAL_: add mochahx plugin  
+. _GENERAL_: add munit plugin  
 . _GENERAL_: add check on other resources (json, images, ...)  
 . _GENERAL_: deploy on haxelib  
+
+## Bugs
+
+. _HAXE_ : output after build is not visible
 
 ## Tech Debt
 
