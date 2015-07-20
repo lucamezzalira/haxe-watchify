@@ -18,7 +18,7 @@ function Watcher(program){
 }
 
 function initialise(src){
-  var srcFolder = validatePath(src) + FILES_EXTENSIONS;
+  var srcFolder = path.normalize(src + FILES_EXTENSIONS);
   var rulesPaths = [srcFolder, EXCLUDE_FILES];
 
   watcher = chokidar.watch(rulesPaths, {
@@ -26,31 +26,20 @@ function initialise(src){
     persistent: true,
     interval: DEFAULT_INTERVAL,
     followSymlinks: false,
+    useFsEvents: false,
     ignoreInitial: true
   });
-
-  if(isOpenFL){
-    addProjectXML();
-  }
 
   addWatcherListeners();
 }
 
-function validatePath(pathToCheck){
-  return path.normalize(pathToCheck);
-}
-
-function addProjectXML(){
-  watcher.add("./project.xml");
-}
-
 function addWatcherListeners(){
   watcher
-    .on('error', onError)
-    .on('ready', onReady)
     .on('add', onAddFile)
     .on('change', onChangeFile)
-    .on('unlink', onUnlinkFile);
+    .on('unlink', onUnlinkFile)
+    .on('error', onError)
+    .on('ready', onReady);
 }
 
 function onReady(){

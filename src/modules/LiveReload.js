@@ -21,6 +21,8 @@ function LiveReload(){
 function close(){}
 
 function start(path){
+  console.log("1", path);
+  console.log("2", getLivereloadCommand(path));
   exec(getLivereloadCommand(path), function(error, stdout, stderr){
 
     if(error){

@@ -6,7 +6,7 @@
   "license": "MIT",
   "dependencies": {
     "chalk": "^1.0.0",
-    "chokidar": "1.0.1",
+    "chokidar": "1.0.5",
     "commander": "^2.8.1",
     "livereloadx": "^0.3.8"
   },
