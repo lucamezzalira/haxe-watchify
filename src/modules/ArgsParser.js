@@ -48,7 +48,7 @@ function buildConfigVO(){
       "port" : commander.port,
       "platforms": commander.platforms,
       "buildType": commander.buildType,
-      "src": getFolderPath(commander.src),
+      "src": commander.src,
       "params" : {}
     }
   };
@@ -57,11 +57,6 @@ function buildConfigVO(){
   configVO.setData(data);
 
   return configVO;
-}
-
-
-function getFolderPath(inputFolder){
-  return inputFolder || "./";
 }
 
 function isHaxeBuildDefined(){

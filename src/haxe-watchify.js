@@ -12,6 +12,7 @@ var ArgsParser = require('./modules/ArgsParser');
 var HaxeCompiler = require('./modules/HaxeCompiler');
 var OpenFLCompiler = require('./modules/OpenFLCompiler');
 var Console = require('./modules/Console');
+var LiveReload = require('./modules/LiveReload');
 
 var compiler;
 
@@ -40,6 +41,7 @@ function onConfigReady(configuration){
   setupCompiler(configuration);
   createFilesManager();
   createWatcher(configuration.getProgram(), configuration.getSrcPath());
+//  createLiveReload();
 }
 
 function setupCompiler(configuration){
@@ -63,6 +65,11 @@ function createFilesManager(configuration){
 function createWatcher(program, src){
   var watcher = new Watcher(program);
   watcher.init(src);
+}
+
+function createLiveReload(){
+//  var liveReload = new LiveReload();
+//  liveReload.start("./Export");
 }
 
 init();

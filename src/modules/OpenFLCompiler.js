@@ -7,7 +7,7 @@ var FilesManagerNotifications = require("../notifications/FilesManagerNotificati
 var BASE_BUILD_COMMAND = "haxelib run openfl";
 var NEW_LINE = "";
 var TIMER_ID = "build-time";
-var configVO, compiler, platforms, platformToBuild;
+var configVO, compiler, platforms, platformToBuild, buildProcess;
 
 function OpenFLCompiler(configuration){
   configVO = configuration;
@@ -39,8 +39,17 @@ function checkPlatformAndBuild(){
 }
 
 function launchBuildPerPlatform(cmd){
-  // nn arriva la fine della build - custom live reload????
-  exec(cmd, handleBuildResults);
+  //html5 nn viene killato il processo
+
+  if(buildProcess){
+    buildProcess.kill("SIGINT");
+  }
+
+  buildProcess = exec(cmd, handleBuildResults);
+  buildProcess.on("close", function(){
+    buildProcess = null;
+    checkPlatformAndBuild();
+  })
 }
 
 function handleBuildResults(error, stdout){
@@ -49,8 +58,6 @@ function handleBuildResults(error, stdout){
   } else {
     showBuildOutput(platformToBuild);
   }
-
-  checkPlatformAndBuild();
 }
 
 function showBuildOutput(platform){
@@ -60,7 +67,7 @@ function showBuildOutput(platform){
 
 function getBuildCommand(platform){
   console.log(compiler, platform);
-  return  compiler + " " + platform + " ";
+  return  compiler + " " + platform;
 }
 
 module.exports = OpenFLCompiler;

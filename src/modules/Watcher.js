@@ -1,4 +1,5 @@
 var chokidar = require('chokidar');
+var path = require('path');
 var EventHub = require('../notifications/EventHub');
 var WatcherNotifications = require('../notifications/WatcherNotifications');
 
@@ -35,12 +36,8 @@ function initialise(src){
   addWatcherListeners();
 }
 
-function validatePath(path){
-  var validPath = (path.charAt(path.length-1) === "/") ? path.substr(0, path.length-1) : path;
-  if(!path){
-    validPath = ".";
-  }
-  return validPath;
+function validatePath(pathToCheck){
+  return path.normalize(pathToCheck);
 }
 
 function addProjectXML(){

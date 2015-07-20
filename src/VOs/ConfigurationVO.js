@@ -1,4 +1,6 @@
 var DEFAULT_COMPILER = "local";
+var DEFAULT_PATH = "./";
+var DEFAULT_BUILD_TYPE = "build";
 var DEFAULT_PORT = 6000;
 var configData;
 
@@ -18,11 +20,11 @@ function ConfigurationVO(){
 }
 
 function getSrcPath(){
-  return configData.build.src;
+  return configData.build.src || DEFAULT_PATH;
 }
 
 function getBuildType(){
-  return configData.build.buildType;
+  return configData.build.buildType || DEFAULT_BUILD_TYPE;
 }
 
 function getCmdCommand(){
