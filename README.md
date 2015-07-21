@@ -4,7 +4,7 @@ Haxe-watchify is a command line daemon that check any files changes in your Haxe
 The files watched are with extension _.hx_, _.hxml_ or _.nmml_.
 Currently haxe-watchify is compatible with _Haxe_ and _OpenFL_ projects.
 
-[![NPM](https://nodei.co/npm/haxe-watchify.png)](https://nodei.co/npm/haxe-watchify/) [![NPM](https://nodei.co/npm-dl/haxe-watchify.png)](https://nodei.co/npm/haxe-watchify/)  
+[![NPM](https://nodei.co/npm/haxe-watchify.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/haxe-watchify/) [![NPM](https://nodei.co/npm-dl/haxe-watchify.png)](https://nodei.co/npm/haxe-watchify/)  
 
 ## How to install
 In order to install haxe-watchify you just need to install from NPM as global package:
