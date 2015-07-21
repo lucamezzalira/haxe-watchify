@@ -66,7 +66,6 @@ function showBuildOutput(platform){
 }
 
 function getBuildCommand(platform){
-  console.log(compiler, platform);
   return  compiler + " " + platform;
 }
 

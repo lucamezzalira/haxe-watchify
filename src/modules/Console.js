@@ -23,6 +23,8 @@ function Console(){
     missingParametersError: missingParamsError,
     openflBuildMessage : openflBuildMessage,
     missingParamsAndConfigFile: missingParamsAndConfigFile,
+    livereloadStarted: livereloadStarted,
+    livereloadError: livereloadStarted,
     startTimer: startTimer,
     stopTimer: stopTimer
   }
@@ -34,6 +36,16 @@ function startTimer(id){
 
 function stopTimer(id){
   console.timeEnd(id);
+  genericTerminalMessage(new Date().toGMTString());
+  genericTerminalMessage("");
+}
+
+function livereloadStarted(url){
+  log(chalk.underline(ConsoleMessages.LIVERELOAD_READY + " " + url));
+}
+
+function livereloadError(error){
+  log(chalk.underline(ConsoleMessages.LIVERELOAD_ERROR + " " + url));
 }
 
 function missingParamsAndConfigFile(){

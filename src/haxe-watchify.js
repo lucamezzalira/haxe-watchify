@@ -41,7 +41,7 @@ function onConfigReady(configuration){
   setupCompiler(configuration);
   createFilesManager();
   createWatcher(configuration.getProgram(), configuration.getSrcPath());
-  createLiveReload();
+  createLiveReload(configuration.getLivereloadPath());
 }
 
 function setupCompiler(configuration){
@@ -67,9 +67,9 @@ function createWatcher(program, src){
   watcher.init(src);
 }
 
-function createLiveReload(){
+function createLiveReload(path){
   var liveReload = new LiveReload();
-  liveReload.start("./Export");
+  liveReload.start(path);
 }
 
 init();

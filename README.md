@@ -150,9 +150,11 @@ if you want collaborate to the project or if you'd like a new feature, please [d
 
 ## Backlog
 
-. _GENERAL_: live reload JS targets
-. _GENERAL_: live reload Flash targets  
+. _GENERAL_: live reload test with haxe  
+. _HAXE_ : output after build is not visible
 . _GENERAL_: update documentation!  
+. _HAXE_: add cpp target configuration  
+. _HAXE_: add php target configuration  
 . _GENERAL_: add plugins strategy for JSON file  
 . _GENERAL_: add checkstyle plugin  
 . _GENERAL_: add mochahx plugin  
@@ -162,12 +164,13 @@ if you want collaborate to the project or if you'd like a new feature, please [d
 
 ## Bugs
 
-. _HAXE_ : output after build is not visible
+. _OPENFL_ : if html5 target before others the compilation doesn't work  
 
 ## Tech Debt
 
 . _TODO:_ unit test  
 . _TODO:_ abstract compiler modules  
+. _TODO:_ rewrite in JS.next()
 
 ## Travis CI project status
 [![Build Status](https://travis-ci.org/lucamezzalira/haxe-watchify.svg?branch=master)](https://travis-ci.org/lucamezzalira/haxe-watchify)

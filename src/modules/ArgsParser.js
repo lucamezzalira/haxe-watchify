@@ -16,7 +16,7 @@ function parse(args){
   if(!argsToParse){
     argsToParse = "";
   }
-//TODO: message text missing for buildType, dist and src
+
   commander
   .version(packageJSON.version)
   .option('--program <value>', ConsoleMessages.PROGRAM_HELP_DESCR, /^(haxe|openfl)$/i, 'haxe')
@@ -25,6 +25,7 @@ function parse(args){
   .option('--port <value>', ConsoleMessages.PORT_HELP_DESCR)
   .option('--buildType <value>', ConsoleMessages.BUILD_TYPE_HELP_DESCR, /^(build|test)$/i, 'build')
   .option('--src <value>', ConsoleMessages.SOURCE_FOLDER_HELP_DESCR)
+  .option('--livereload <value>', ConsoleMessages.LIVERELOAD_HELP_DESCR)
   .option('--platforms <values>', ConsoleMessages.PLATFORMS_HELP_DESCR, splitPlatforms)
   .parse(argsToParse);
 
@@ -49,6 +50,7 @@ function buildConfigVO(){
       "platforms": commander.platforms,
       "buildType": commander.buildType,
       "src": commander.src,
+      "livereload" : commander.livereload,
       "params" : {}
     }
   };

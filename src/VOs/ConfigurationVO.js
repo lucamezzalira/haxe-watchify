@@ -15,8 +15,13 @@ function ConfigurationVO(){
     getProgram: getProgramDefined,
     getPlatforms: getOpenFLPlatforms,
     getBuildType: getBuildType,
+    getLivereloadPath: getLivereloadPath,
     getSrcPath: getSrcPath
   }
+}
+
+function getLivereloadPath(){
+  return configData.build.livereload || DEFAULT_PATH;
 }
 
 function getSrcPath(){
