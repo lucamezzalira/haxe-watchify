@@ -24,7 +24,7 @@ function Console(){
     openflBuildMessage : openflBuildMessage,
     missingParamsAndConfigFile: missingParamsAndConfigFile,
     livereloadStarted: livereloadStarted,
-    livereloadError: livereloadStarted,
+    livereloadError: livereloadError,
     startTimer: startTimer,
     stopTimer: stopTimer
   }
@@ -45,7 +45,7 @@ function livereloadStarted(url){
 }
 
 function livereloadError(error){
-  log(chalk.underline(ConsoleMessages.LIVERELOAD_ERROR + " " + url));
+  log(chalk.bgRed(ConsoleMessages.LIVERELOAD_ERROR + " " + error));
 }
 
 function missingParamsAndConfigFile(){

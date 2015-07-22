@@ -29,7 +29,10 @@ function getSrcPath(){
 }
 
 function getBuildType(){
-  return configData.build.buildType || DEFAULT_BUILD_TYPE;
+  var type = configData.build.buildType || DEFAULT_BUILD_TYPE;
+  if(configData.build.livereload)
+    type = DEFAULT_BUILD_TYPE;
+  return type;
 }
 
 function getCmdCommand(){
