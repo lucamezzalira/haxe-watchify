@@ -26,7 +26,6 @@ function start(src){
 
 function handleServerResult(error, stdout, stderr){
   if(error){
-
     close();
     Console.livereloadError(error);
     return;
