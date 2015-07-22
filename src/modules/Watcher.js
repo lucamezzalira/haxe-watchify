@@ -1,9 +1,10 @@
 var chokidar = require('chokidar');
+var path = require('path');
 var EventHub = require('../notifications/EventHub');
 var WatcherNotifications = require('../notifications/WatcherNotifications');
 
-var FILES_EXTENSIONS = '/**/*.(hx|hxml|nmml)';
-var EXCLUDE_FILES = '!Export/**/*.(hx|hxml|nmml)';
+var FILES_EXTENSIONS = '/**/*.(hx|hxml|nmml|jpg|jpeg|gif|png|xml|json|yml|css|html|php)';
+var EXCLUDE_FILES = '!(output|dist|bin|Export)/**/*.*';
 var DEFAULT_INTERVAL = 500;
 
 var watcher, isOpenFL;
@@ -17,7 +18,7 @@ function Watcher(program){
 }
 
 function initialise(src){
-  var srcFolder = validatePath(src) + FILES_EXTENSIONS;
+  var srcFolder = path.normalize(src + FILES_EXTENSIONS);
   var rulesPaths = [srcFolder, EXCLUDE_FILES];
 
   watcher = chokidar.watch(rulesPaths, {
@@ -25,35 +26,20 @@ function initialise(src){
     persistent: true,
     interval: DEFAULT_INTERVAL,
     followSymlinks: false,
+    useFsEvents: false,
     ignoreInitial: true
   });
-
-  if(isOpenFL){
-    addProjectXML();
-  }
 
   addWatcherListeners();
 }
 
-function validatePath(path){
-  var validPath = (path.charAt(path.length-1) === "/") ? path.substr(0, path.length-1) : path;
-  if(!path){
-    validPath = ".";
-  }
-  return validPath;
-}
-
-function addProjectXML(){
-  watcher.add("./project.xml");
-}
-
 function addWatcherListeners(){
   watcher
-    .on('error', onError)
-    .on('ready', onReady)
     .on('add', onAddFile)
     .on('change', onChangeFile)
-    .on('unlink', onUnlinkFile);
+    .on('unlink', onUnlinkFile)
+    .on('error', onError)
+    .on('ready', onReady);
 }
 
 function onReady(){

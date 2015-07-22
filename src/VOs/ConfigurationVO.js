@@ -1,4 +1,6 @@
 var DEFAULT_COMPILER = "local";
+var DEFAULT_PATH = "./";
+var DEFAULT_BUILD_TYPE = "build";
 var DEFAULT_PORT = 6000;
 var configData;
 
@@ -13,16 +15,24 @@ function ConfigurationVO(){
     getProgram: getProgramDefined,
     getPlatforms: getOpenFLPlatforms,
     getBuildType: getBuildType,
+    getLivereloadPath: getLivereloadPath,
     getSrcPath: getSrcPath
   }
 }
 
+function getLivereloadPath(){
+  return configData.build.livereload || DEFAULT_PATH;
+}
+
 function getSrcPath(){
-  return configData.build.src;
+  return configData.build.src || DEFAULT_PATH;
 }
 
 function getBuildType(){
-  return configData.build.buildType;
+  var type = configData.build.buildType || DEFAULT_BUILD_TYPE;
+  if(configData.build.livereload)
+    type = DEFAULT_BUILD_TYPE;
+  return type;
 }
 
 function getCmdCommand(){
