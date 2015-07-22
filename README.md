@@ -226,8 +226,8 @@ if you want collaborate to the project or if you'd like a new feature, please [d
 . _GENERAL_: add plugins strategy for JSON file  
 . _GENERAL_: add checkstyle plugin  
 . _GENERAL_: add mochahx plugin  
-. _GENERAL_: add munit plugin
-. _GENERAL_: deploy on haxelib
+. _GENERAL_: add munit plugin  
+. _GENERAL_: deploy on haxelib  
 
 ## Bugs
 
