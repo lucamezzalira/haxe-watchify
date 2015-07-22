@@ -152,8 +152,6 @@ if you want collaborate to the project or if you'd like a new feature, please [d
 
 ## Backlog
 
-. _GENERAL_: live reload test with haxe  
-. _HAXE_ : output after build is not visible
 . _GENERAL_: update documentation!  
 . _HAXE_: add nme target configuration  
 . _GENERAL_: add plugins strategy for JSON file  
