@@ -3,8 +3,8 @@ var path = require('path');
 var EventHub = require('../notifications/EventHub');
 var WatcherNotifications = require('../notifications/WatcherNotifications');
 
-var FILES_EXTENSIONS = '/**/*.(hx|hxml|nmml|jpg|jpeg|gif|png|xml|json|yml)';
-var EXCLUDE_FILES = '!(dist|bin|Export)/**/*.*';
+var FILES_EXTENSIONS = '/**/*.(hx|hxml|nmml|jpg|jpeg|gif|png|xml|json|yml|css|html|php)';
+var EXCLUDE_FILES = '!(output|dist|bin|Export)/**/*.*';
 var DEFAULT_INTERVAL = 500;
 
 var watcher, isOpenFL;

@@ -12,6 +12,9 @@ The files watched are with the following extensions:
 * _.xml_  
 * _.json_  
 * _.yml_  
+* _.css_  
+* _.php_  
+* _.html_  
 
 Currently haxe-watchify is compatible with _Haxe_ and _OpenFL_ projects.
 
