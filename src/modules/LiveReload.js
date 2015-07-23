@@ -35,7 +35,7 @@ function handleServerResult(error, stdout, stderr){
 }
 
 function getLivereloadCommand(src){
-  return livereloadPath + LIVERELOAD_COMMAND + src;
+  return "node " + livereloadPath + LIVERELOAD_COMMAND + src;
 }
 
 module.exports = LiveReload;

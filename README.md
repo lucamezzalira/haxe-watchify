@@ -213,6 +213,10 @@ To print the help menu just type inside your console window:
 haxe-watchify --help
 ```
 
+## Note for Windows users
+
+Haxe-watchify requires Python to be installed in your machine in order to work.
+
 
 ## Contacts and suggestions
 
