@@ -1,4 +1,4 @@
-![haxe-watchify logo](https://github.com/lucamezzalira/haxe-watchify/blob/master/resources/hwLogo.png)
+![haxe-watchify logo](https://github.com/lucamezzalira/haxe-watchify/blob/master/logo.png)
 
 # Haxe-watchify
 
