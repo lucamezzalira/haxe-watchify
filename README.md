@@ -215,7 +215,7 @@ haxe-watchify --help
 
 ## Note for Windows users
 
-Haxe-watchify requires Python to be installed in your machine in order to work.
+Haxe-watchify requires Python 2.7.x to be installed in your machine in order to work.
 
 
 ## Contacts and suggestions
