@@ -228,6 +228,7 @@ if you want collaborate to the project or if you'd like a new feature, please [d
 
 ## Backlog
 
+. _GENERAL_: print out server URL when started  
 . _HAXE_: add nme target configuration  
 . _GENERAL_: add plugins strategy for JSON file  
 . _GENERAL_: add checkstyle plugin  
