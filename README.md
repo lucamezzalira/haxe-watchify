@@ -18,7 +18,8 @@ The files watched are with the following extensions:
 * _.php_  
 * _.html_  
 
-Currently haxe-watchify is compatible with _Haxe_ and _OpenFL_ projects.
+Currently haxe-watchify is compatible with _Haxe_ and _OpenFL_ projects.  
+[Official website](http://www.haxe-watchify.com)
 
 [![NPM](https://nodei.co/npm/haxe-watchify.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/haxe-watchify/)
 
