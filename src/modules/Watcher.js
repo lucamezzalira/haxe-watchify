@@ -3,24 +3,26 @@ var path = require('path');
 var EventHub = require('../notifications/EventHub');
 var WatcherNotifications = require('../notifications/WatcherNotifications');
 
-var FILES_EXTENSIONS = '/**/*.(hx|hxml|nmml|jpg|jpeg|gif|png|xml|json|yml|css|html|php)';
-var EXCLUDE_FILES = '!(output|dist|bin|Export)/**/*.*';
+var FILES_EXTENSIONS = '/**/*.(hx|hxml|nmml|jpg|jpeg|gif|png|xml|json|yml|css|html|php|ogg|wav|mp3|mp4|ttf|otf)';
+var EXCLUDE_FILES = '/**/*.*';
+var DEFAULT_EXCLUDED_FOLDERS = "!(output|dist|bin|export|Export)";
 var DEFAULT_INTERVAL = 500;
 
-var watcher, isOpenFL;
+var watcher, isOpenFL, src, foldersToExclude;
 
-function Watcher(program){
-  isOpenFL = (program === "openfl") ? true : false;
-
+function Watcher(config){
+  isOpenFL = (config.getProgram() === "openfl") ? true : false;
+  src = config.getSrcPath();
+  foldersToExclude = if(config.getLivereloadPath()) ? "!(" + config.getLivereloadPath() + ")" : DEFAULT_EXCLUDED_FOLDERS;
   return{
     init: initialise
   }
 }
 
-function initialise(src){
+function initialise(){
   var srcFolder = path.normalize(src + FILES_EXTENSIONS);
-  var rulesPaths = [srcFolder, EXCLUDE_FILES];
-
+  var rulesPaths = [srcFolder, (foldersToExclude + EXCLUDE_FILES)];
+//TODO: to test
   watcher = chokidar.watch(rulesPaths, {
     ignored: /[\/\\]\./,
     persistent: true,

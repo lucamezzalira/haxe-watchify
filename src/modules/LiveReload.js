@@ -20,8 +20,11 @@ function close(){
 }
 
 function start(src){
-  var normalizePath = path.normalize(src);
-  livereloadx = exec(getLivereloadCommand(normalizePath), handleServerResult);
+  if(src){
+    var normalizePath = path.normalize(src);
+    Console.livereloadStarted(DEFAULT_URL);
+    livereloadx = exec(getLivereloadCommand(normalizePath), handleServerResult);
+  }
 }
 
 function handleServerResult(error, stdout, stderr){
@@ -30,8 +33,6 @@ function handleServerResult(error, stdout, stderr){
     Console.livereloadError(error);
     return;
   }
-
-  Console.livereloadStarted(DEFAULT_URL);
 }
 
 function getLivereloadCommand(src){

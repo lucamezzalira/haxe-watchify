@@ -21,7 +21,7 @@ function ConfigurationVO(){
 }
 
 function getLivereloadPath(){
-  return configData.build.livereload || DEFAULT_PATH;
+  return configData.build.livereload;
 }
 
 function getSrcPath(){

@@ -6,7 +6,7 @@ module.exports = {
   FILE_ADDED: "file added:",
   BUILD_STARTED: "building",
   BUILD_OPENFL_FINISHED: "platform ready",
-  LIVERELOAD_READY: "live reload server ready at:",
+  LIVERELOAD_READY: "live reload is starting at:",
   LIVERELOAD_ERROR: "error starting livereload server!",
   BUILD_FINISHED: "build complete!",
   ERROR_LOADING_CONFIG_FILE: "error loading hx-watch.json: ",

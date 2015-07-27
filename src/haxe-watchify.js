@@ -40,7 +40,7 @@ function onDataUnavailable(fromModule){
 function onConfigReady(configuration){
   setupCompiler(configuration);
   createFilesManager();
-  createWatcher(configuration.getProgram(), configuration.getSrcPath());
+  createWatcher(configuration);
   createLiveReload(configuration.getLivereloadPath());
 }
 
@@ -62,9 +62,9 @@ function createFilesManager(configuration){
   filesManager.init();
 }
 
-function createWatcher(program, src){
-  var watcher = new Watcher(program);
-  watcher.init(src);
+function createWatcher(config){
+  var watcher = new Watcher(config);
+  watcher.init();
 }
 
 function createLiveReload(path){
