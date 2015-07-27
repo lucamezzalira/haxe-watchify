@@ -18,7 +18,8 @@ The files watched are with the following extensions:
 * _.php_  
 * _.html_  
 
-Currently haxe-watchify is compatible with _Haxe_ and _OpenFL_ projects.
+Currently haxe-watchify is compatible with _Haxe_ and _OpenFL_ projects.  
+[Official website](http://www.haxe-watchify.com)
 
 [![NPM](https://nodei.co/npm/haxe-watchify.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/haxe-watchify/)
 
@@ -219,33 +220,16 @@ haxe-watchify --help
 
 ## Note for Windows users
 
-Haxe-watchify requires Python 2.7.x to be installed in your machine in order to work.
+**Haxe-watchify requires Python 2.7.x** to be installed in your machine in order to work.
 
 
 ## Contacts and suggestions
 
 To report a bug please use the issues section on Github.
 
+You can also check the [project roadmap](https://trello.com/b/53Bash8a) for the tool and the website.
+
 if you want collaborate to the project or if you'd like a new feature, please [drop me a line](mailto:mezzalab@gmail.com) !
-
-## Backlog
-
-. _HAXE_: add nme target configuration  
-. _GENERAL_: add plugins strategy for JSON file  
-. _GENERAL_: add checkstyle plugin  
-. _GENERAL_: add mochahx plugin  
-. _GENERAL_: add munit plugin  
-. _GENERAL_: deploy on haxelib  
-
-## Bugs
-
-. _OPENFL_: show an error when OpenFL compiles but the target is compiled correctly  
-
-## Tech Debt
-
-. _TODO:_ unit test  
-. _TODO:_ abstract compiler modules  
-. _TODO:_ rewrite in JS.next()
 
 ## Travis CI project status
 [![Build Status](https://travis-ci.org/lucamezzalira/haxe-watchify.svg?branch=master)](https://travis-ci.org/lucamezzalira/haxe-watchify)
