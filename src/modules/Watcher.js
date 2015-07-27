@@ -3,7 +3,7 @@ var path = require('path');
 var EventHub = require('../notifications/EventHub');
 var WatcherNotifications = require('../notifications/WatcherNotifications');
 
-var FILES_EXTENSIONS = '/**/*.(hx|hxml|nmml|jpg|jpeg|gif|png|xml|json|yml|css|html|php|ogg|wav|mp3|mp4|ttf|otf)';
+var FILES_EXTENSIONS = '/**/*.(hx|hxml|nmml|jpg|jpeg|gif|png|xml|json|yml|css|html|php|ogg|wav|mp3|mp4|m4a|ttf|otf)';
 var EXCLUDE_FILES = '/**/*.*';
 var DEFAULT_EXCLUDED_FOLDERS = "!(output|dist|bin|export|Export)";
 var DEFAULT_INTERVAL = 500;
