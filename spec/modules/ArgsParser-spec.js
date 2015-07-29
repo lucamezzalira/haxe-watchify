@@ -5,7 +5,12 @@ var ConfigurationNotifications = require('../../src/notifications/ConfigurationN
 describe("ArgsParser testsuite", function(){
 
   beforeEach(function(){
-    this.argsParser = new ArgsParser();
+    var modelMock = {};
+    this.argsParser = new ArgsParser(modelMock);
+  });
+
+  afterEach(function(){
+    this.argsParser = null;
   });
 
   describe("Setup ArgsParser", function(){
@@ -47,7 +52,7 @@ describe("ArgsParser testsuite", function(){
 
       beforeEach(function(){
           spyOn(EventHub, "emit");
-          var ap = new ArgsParser();
+          var ap = new ArgsParser({});
           ap.parse();
       });
 
@@ -66,7 +71,7 @@ describe("ArgsParser testsuite", function(){
                           '--program',
                           'haxe' ];
 
-          var ap = new ArgsParser();
+          var ap = new ArgsParser({});
           ap.parse(toParse);
       });
 
@@ -85,7 +90,7 @@ describe("ArgsParser testsuite", function(){
                           '--program',
                           'openfl' ];
 
-          var ap = new ArgsParser();
+          var ap = new ArgsParser({});
           ap.parse(toParse);
       });
 
@@ -106,7 +111,7 @@ describe("ArgsParser testsuite", function(){
                           'platforms',
                           'html5,flash,tizen'];
 
-          var ap = new ArgsParser();
+          var ap = new ArgsParser({});
           ap.parse(toParse);
       });
 
@@ -128,7 +133,7 @@ describe("ArgsParser testsuite", function(){
                           'html5',
                           'tizen'];
 
-          var ap = new ArgsParser();
+          var ap = new ArgsParser({});
           ap.parse(toParse);
       });
 
@@ -141,7 +146,7 @@ describe("ArgsParser testsuite", function(){
 
       beforeEach(function(){
           spyOn(EventHub, "emit");
-          var ap = new ArgsParser();
+          var ap = new ArgsParser({setData:function(){}});
           ap.parse(argsToParse);
       });
 

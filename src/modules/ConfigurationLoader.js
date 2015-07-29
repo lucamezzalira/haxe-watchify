@@ -2,13 +2,14 @@ var fs = require('fs');
 var EventHub = require('../notifications/EventHub');
 var ConsoleMessages = require('../messages/ConsoleMessages');
 var ConfigurationNotifications = require('../notifications/ConfigurationNotifications');
-var ConfigurationVO = require('../VOs/ConfigurationVO');
+var ConfigurationModel = require('../models/ConfigurationModel');
 var Console = require('./Console');
 
 var CONFIGURATION_FILENAME = "hx-watch.json";
-var file;
+var file, model;
 
-function ConfigurationLoader(){
+function ConfigurationLoader(configurationModel){
+  mainModel = configurationModel;
   file = process.cwd() + '/' + CONFIGURATION_FILENAME;
 
   return{
@@ -40,10 +41,9 @@ function handleLoadResults(error, data){
       process.exit(1);
     }
 
-    var configVO = new ConfigurationVO();
-    configVO.setData(jsonData);
+    mainModel.setData(jsonData);
 
-    EventHub.emit(ConfigurationNotifications.COMPLETE, configVO);
+    EventHub.emit(ConfigurationNotifications.COMPLETE, mainModel);
 }
 
 module.exports = ConfigurationLoader;

@@ -13,10 +13,13 @@ var HaxeCompiler = require('./modules/HaxeCompiler');
 var OpenFLCompiler = require('./modules/OpenFLCompiler');
 var Console = require('./modules/Console');
 var LiveReload = require('./modules/LiveReload');
+var ConfigurationModel = require('./models/ConfigurationModel');
 
-var compiler;
+var compiler, model;
 
 function init(){
+  model = new ConfigurationModel();
+
   loadConfig();
 }
 
@@ -33,7 +36,7 @@ function onDataUnavailable(fromModule){
     Console.missingParamsAndConfigFile();
     process.exit(1);
   }
-  var config = new ConfigurationLoader();
+  var config = new ConfigurationLoader(model);
   config.load();
 }
 
@@ -53,7 +56,7 @@ function setupCompiler(configuration){
 }
 
 function createArgsParser(){
-  var parser = new ArgsParser();
+  var parser = new ArgsParser(model);
   parser.parse(process.argv);
 }
 
