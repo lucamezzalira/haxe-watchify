@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/models/ConfigurationModel.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../prettify.css">
+    <link rel="stylesheet" href="../../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header medium">
+    <h1>Code coverage report for <span class="entity">src/models/ConfigurationModel.js</span></h1>
+    <h2>
+        Statements: <span class="metric">75.61% <small>(31 / 41)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">55.56% <small>(10 / 18)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">41.67% <small>(5 / 12)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">75.61% <small>(31 / 41)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">src/models/</a> &#187; ConfigurationModel.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">var DEFAULT_COMPILER = "local";
+var DEFAULT_PATH = "./";
+var DEFAULT_BUILD_TYPE = "build";
+var DEFAULT_PORT = 6000;
+var HXML_EXT = "hxml";
+var configData;
+&nbsp;
+function ConfigurationModel(){
+&nbsp;
+  configData = {};
+&nbsp;
+  return{
+    setData: setRawData,
+    getCompilerType: getCompiler,
+    getHXML: getHXMLFile,
+    getParameters: getParameters,
+    
+    getPort: getServerPort,
+    getCmd: getCmdCommand,
+    getProgram: getProgramDefined,
+    getPlatforms: getOpenFLPlatforms,
+    getBuildType: getBuildType,
+    getLivereloadPath: getLivereloadPath,
+    getSrcPath: getSrcPath
+  }
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function getLivereloadPath(){</span>
+<span class="cstat-no" title="statement not covered" >  return configData.livereload;</span>
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function getSrcPath(){</span>
+<span class="cstat-no" title="statement not covered" >  return configData.src || DEFAULT_PATH;</span>
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function getBuildType(){</span>
+<span class="cstat-no" title="statement not covered" >  var type = configData.buildType || DEFAULT_BUILD_TYPE;</span>
+<span class="cstat-no" title="statement not covered" >  if(configData.livereload)</span>
+<span class="cstat-no" title="statement not covered" >    type = DEFAULT_BUILD_TYPE;</span>
+<span class="cstat-no" title="statement not covered" >  return type;</span>
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function getCmdCommand(){</span>
+<span class="cstat-no" title="statement not covered" >  return configData.cmd;</span>
+}
+&nbsp;
+function getParameters(){
+  return configData.params;
+}
+&nbsp;
+function getHXMLFile(){
+  if(configData.hxml.split(".")[1] !== HXML_EXT){
+    throw new Error("the hxml file should be set with .hxml extension");
+  }
+&nbsp;
+  return configData.hxml;
+}
+&nbsp;
+function getCompiler(){
+  return configData.compiler || DEFAULT_COMPILER;
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function getServerPort(){</span>
+<span class="cstat-no" title="statement not covered" >  return configData.port || DEFAULT_PORT;</span>
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function getOpenFLPlatforms(){</span>
+<span class="cstat-no" title="statement not covered" >  return configData.platforms;</span>
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function getProgramDefined(){</span>
+<span class="cstat-no" title="statement not covered" >  return configData.program;</span>
+}
+&nbsp;
+function setRawData(data){
+  if(toString.call(data).toLowerCase().indexOf("object object") &lt; 0){
+    throw new Error("configuration should be an object instead of ", toString.call(data));
+  }
+&nbsp;
+  if(!data.build || toString.call(data.build).toLowerCase().indexOf("object object") &lt; 0){
+    throw new Error("configuration object should contain build as Object to configurate haxe-watchify properly");
+  }
+&nbsp;
+  configData = data.build;
+}
+&nbsp;
+module.exports = ConfigurationModel;
+&nbsp;</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Jul 30 2015 00:41:17 GMT+0100 (BST)</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>
