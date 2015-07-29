@@ -179,7 +179,7 @@ describe("ConfigurationModel testsuite", function(){
       this.model = null;
     });
 
-    it("should return the hxml file set in the build configuration object", function(){
+    it("should return the parameters Object set in the build configuration object", function(){
       var paramsObj = {
           cp: "Source",
           js: "dist/Main.js"
