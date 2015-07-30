@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for spec/modules/ArgsParser-spec.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../prettify.css">
+    <link rel="stylesheet" href="../../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header high">
+    <h1>Code coverage report for <span class="entity">spec/modules/ArgsParser-spec.js</span></h1>
+    <h2>
+        Statements: <span class="metric">100% <small>(70 / 70)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">100% <small>(0 / 0)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">100% <small>(29 / 29)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">100% <small>(70 / 70)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">spec/modules/</a> &#187; ArgsParser-spec.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">var ArgsParser = require("../../src/modules/ArgsParser");
+var EventHub = require("../../src/notifications/EventHub");
+var ConfigurationNotifications = require('../../src/notifications/ConfigurationNotifications');
+&nbsp;
+describe("ArgsParser testsuite", function(){
+&nbsp;
+  beforeEach(function(){
+    var modelMock = {};
+    this.argsParser = new ArgsParser(modelMock);
+  });
+&nbsp;
+  afterEach(function(){
+    this.argsParser = null;
+  });
+&nbsp;
+  describe("Setup ArgsParser", function(){
+&nbsp;
+    it("create ArgsParser", function(){
+      expect(this.argsParser).toBeDefined();
+    });
+&nbsp;
+    it("should have a parse method", function(){
+      expect(this.argsParser.parse).toEqual(jasmine.any(Function));
+    });
+  });
+&nbsp;
+  describe("input arguments tests", function(){
+    var argsToParse;
+&nbsp;
+    beforeEach(function(){
+      spyOn(this.argsParser, 'parse');
+&nbsp;
+      argsToParse = [ 'node',
+                      './haxe-watchify.js',
+                      '--program',
+                      'haxe',
+                      '--hxml',
+                      'a.haxml' ];
+&nbsp;
+      this.argsParser.parse(argsToParse);
+    });
+&nbsp;
+    it("parse method should have been called", function(){
+      expect(this.argsParser.parse).toHaveBeenCalled();
+    });
+&nbsp;
+    it("parse method should have been called with '--program haxe --hxml a.hxml'", function(){
+      expect(this.argsParser.parse).toHaveBeenCalledWith(argsToParse);
+    });
+&nbsp;
+    describe("ConfigurationNotifications.DATA_UNAVAILABLE emitted test", function(){
+&nbsp;
+      beforeEach(function(){
+          spyOn(EventHub, "emit");
+          var ap = new ArgsParser({});
+          ap.parse();
+      });
+&nbsp;
+      it("parse method should dispatch a ConfigurationNotifications.DATA_UNAVAILABLE and fromArgsParser when there isn't any arguments passed", function(){
+        expect(EventHub.emit).toHaveBeenCalledWith(ConfigurationNotifications.DATA_UNAVAILABLE, "fromArgsParser");
+      });
+    });
+&nbsp;
+    describe("ConfigurationNotifications.DATA_UNAVAILABLE emitted test", function(){
+&nbsp;
+      beforeEach(function(){
+          spyOn(EventHub, "emit");
+&nbsp;
+          var toParse = [ 'node',
+                          './haxe-watchify.js',
+                          '--program',
+                          'haxe' ];
+&nbsp;
+          var ap = new ArgsParser({});
+          ap.parse(toParse);
+      });
+&nbsp;
+      it("parse method should dispatch a ConfigurationNotifications.DATA_UNAVAILABLE and fromArgsParser hxml arg is not set", function(){
+        expect(EventHub.emit).toHaveBeenCalledWith(ConfigurationNotifications.DATA_UNAVAILABLE, "fromArgsParser");
+      });
+    });
+&nbsp;
+    describe("ConfigurationNotifications.DATA_UNAVAILABLE emitted test", function(){
+&nbsp;
+      beforeEach(function(){
+          spyOn(EventHub, "emit");
+&nbsp;
+          var toParse = [ 'node',
+                          './haxe-watchify.js',
+                          '--program',
+                          'openfl' ];
+&nbsp;
+          var ap = new ArgsParser({});
+          ap.parse(toParse);
+      });
+&nbsp;
+      it("parse method should dispatch a ConfigurationNotifications.DATA_UNAVAILABLE and fromArgsParser platforms arg is not set", function(){
+        expect(EventHub.emit).toHaveBeenCalledWith(ConfigurationNotifications.DATA_UNAVAILABLE, "fromArgsParser");
+      });
+    });
+&nbsp;
+    describe("ConfigurationNotifications.DATA_UNAVAILABLE emitted test", function(){
+&nbsp;
+      beforeEach(function(){
+          spyOn(EventHub, "emit");
+&nbsp;
+          var toParse = [ 'node',
+                          './haxe-watchify.js',
+                          '--program',
+                          'openfel',
+                          'platforms',
+                          'html5,flash,tizen'];
+&nbsp;
+          var ap = new ArgsParser({});
+          ap.parse(toParse);
+      });
+&nbsp;
+      it("parse method should dispatch a ConfigurationNotifications.DATA_UNAVAILABLE and fromArgsParser program arg is set with wrong parameter", function(){
+        expect(EventHub.emit).toHaveBeenCalledWith(ConfigurationNotifications.DATA_UNAVAILABLE, "fromArgsParser");
+      });
+    });
+&nbsp;
+    describe("ConfigurationNotifications.DATA_UNAVAILABLE emitted test", function(){
+&nbsp;
+      beforeEach(function(){
+          spyOn(EventHub, "emit");
+&nbsp;
+          var toParse = [ 'node',
+                          './haxe-watchify.js',
+                          '--program',
+                          'openfel',
+                          'platforms',
+                          'html5',
+                          'tizen'];
+&nbsp;
+          var ap = new ArgsParser({});
+          ap.parse(toParse);
+      });
+&nbsp;
+      it("parse method should dispatch a ConfigurationNotifications.DATA_UNAVAILABLE and fromArgsParser platforms arg is set with multiple strings instead of a coma separeted value", function(){
+        expect(EventHub.emit).toHaveBeenCalledWith(ConfigurationNotifications.DATA_UNAVAILABLE, "fromArgsParser");
+      });
+    });
+&nbsp;
+    describe("ConfigurationNotifications.COMPLETE emitted test", function(){
+&nbsp;
+      beforeEach(function(){
+          spyOn(EventHub, "emit");
+          var ap = new ArgsParser({setData:function(){}});
+          ap.parse(argsToParse);
+      });
+&nbsp;
+      it("parse method should dispatch a ConfigurationNotifications.COMPLETE when it's specified the program and the builder on Haxe project", function(){
+        expect(EventHub.emit).toHaveBeenCalledWith(ConfigurationNotifications.COMPLETE, jasmine.any(Object));
+      });
+    });
+&nbsp;
+  });
+});
+&nbsp;</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Jul 30 2015 23:12:57 GMT+0100 (BST)</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

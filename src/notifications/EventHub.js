@@ -1,3 +1,10 @@
 var EventEmitter = require("events").EventEmitter;
 
-module.exports = new EventEmitter();
+function EventHub(){
+  var evtEmitter = new EventEmitter();
+  evtEmitter.setMaxListeners(0);
+
+  return evtEmitter;
+}
+
+module.exports = new EventHub();

@@ -11,7 +11,8 @@
     "livereloadx": "^0.3.8"
   },
   "scripts": {
-    "test": "jasmine spec/**/*.js",
+    "test": "istanbul test jasmine spec/**/*.js",
+    "testAndCoverage" : "npm run test --coverage",
     "static-analysis": "plato -r -d report src",
     "gen-change-log": "github_changelog_generator lucamezzalira/haxe-watchify"
   },
@@ -22,6 +23,7 @@
     "haxe-watchify": "src/haxe-watchify.js"
   },
   "devDependencies": {
+    "istanbul": "^0.3.17",
     "jasmine": "^2.3.1",
     "plato": "^1.5.0",
     "v8-profiler": "^5.2.9"

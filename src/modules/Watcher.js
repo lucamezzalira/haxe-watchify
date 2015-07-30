@@ -13,7 +13,7 @@ var watcher, isOpenFL, src, foldersToExclude;
 function Watcher(config){
   isOpenFL = (config.getProgram() === "openfl") ? true : false;
   src = config.getSrcPath();
-  foldersToExclude = if(config.getLivereloadPath()) ? "!(" + config.getLivereloadPath() + ")" : DEFAULT_EXCLUDED_FOLDERS;
+  foldersToExclude = (config.getLivereloadPath()) ? "!(" + config.getLivereloadPath() + ")" : DEFAULT_EXCLUDED_FOLDERS;
   return{
     init: initialise
   }

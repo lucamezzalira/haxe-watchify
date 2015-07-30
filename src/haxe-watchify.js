@@ -13,10 +13,13 @@ var HaxeCompiler = require('./modules/HaxeCompiler');
 var OpenFLCompiler = require('./modules/OpenFLCompiler');
 var Console = require('./modules/Console');
 var LiveReload = require('./modules/LiveReload');
+var ConfigurationModel = require('./models/ConfigurationModel');
 
-var compiler;
+var compiler, model;
 
 function init(){
+  model = new ConfigurationModel();
+
   loadConfig();
 }
 
@@ -33,37 +36,37 @@ function onDataUnavailable(fromModule){
     Console.missingParamsAndConfigFile();
     process.exit(1);
   }
-  var config = new ConfigurationLoader();
+  var config = new ConfigurationLoader(model);
   config.load();
 }
 
-function onConfigReady(configuration){
-  setupCompiler(configuration);
+function onConfigReady(){
+  setupCompiler(model);
   createFilesManager();
-  createWatcher(configuration);
-  createLiveReload(configuration.getLivereloadPath());
+  createWatcher(model);
+  createLiveReload(model.getLivereloadPath());
 }
 
-function setupCompiler(configuration){
-  if(configuration.getProgram() === "haxe"){
-    compiler = new HaxeCompiler(configuration);
+function setupCompiler(model){
+  if(model.getProgram() === "openfl"){
+    compiler = new OpenFLCompiler(model);
   } else {
-    compiler = new OpenFLCompiler(configuration);
+    compiler = new HaxeCompiler(model);
   }
 }
 
 function createArgsParser(){
-  var parser = new ArgsParser();
+  var parser = new ArgsParser(model);
   parser.parse(process.argv);
 }
 
-function createFilesManager(configuration){
+function createFilesManager(){
   var filesManager = new FilesManager();
   filesManager.init();
 }
 
-function createWatcher(config){
-  var watcher = new Watcher(config);
+function createWatcher(model){
+  var watcher = new Watcher(model);
   watcher.init();
 }
 

@@ -1,11 +1,15 @@
 var commander = require('commander');
 var ConfigurationNotifications = require('../notifications/ConfigurationNotifications');
 var packageJSON = require('../../package.json');
-var ConfigurationVO = require('../VOs/ConfigurationVO');
+var ConfigurationModel = require('../models/ConfigurationModel');
 var EventHub = require('../notifications/EventHub');
 var ConsoleMessages = require('../messages/ConsoleMessages');
 
-function ArgsParser(){
+var mainModel;
+
+function ArgsParser(configurationModel){
+  mainModel = configurationModel;
+
   return{
     parse: parse
   };
@@ -32,7 +36,7 @@ function parse(args){
   if(!isHaxeBuildDefined() && !isOpenFLBuildDefined()){
     EventHub.emit(ConfigurationNotifications.DATA_UNAVAILABLE, "fromArgsParser");
   } else {
-    EventHub.emit(ConfigurationNotifications.COMPLETE, buildConfigVO());
+    popolateModel();
   }
 }
 
@@ -40,7 +44,7 @@ function splitPlatforms(val) {
   return val.toString().split(',');
 }
 
-function buildConfigVO(){
+function popolateModel(){
   var data = {
     "build":{
       "program" :commander.program,
@@ -55,10 +59,7 @@ function buildConfigVO(){
     }
   };
 
-  var configVO = new ConfigurationVO();
-  configVO.setData(data);
-
-  return configVO;
+  mainModel.setData(data);
 }
 
 function isHaxeBuildDefined(){

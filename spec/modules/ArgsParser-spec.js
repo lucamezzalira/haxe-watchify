@@ -3,9 +3,19 @@ var EventHub = require("../../src/notifications/EventHub");
 var ConfigurationNotifications = require('../../src/notifications/ConfigurationNotifications');
 
 describe("ArgsParser testsuite", function(){
+  var modelMock;
 
   beforeEach(function(){
-    this.argsParser = new ArgsParser();
+    modelMock = {
+      setData: function(data){
+
+      }
+    };
+    this.argsParser = new ArgsParser(modelMock);
+  });
+
+  afterEach(function(){
+    this.argsParser = null;
   });
 
   describe("Setup ArgsParser", function(){
@@ -47,7 +57,7 @@ describe("ArgsParser testsuite", function(){
 
       beforeEach(function(){
           spyOn(EventHub, "emit");
-          var ap = new ArgsParser();
+          var ap = new ArgsParser({});
           ap.parse();
       });
 
@@ -66,7 +76,7 @@ describe("ArgsParser testsuite", function(){
                           '--program',
                           'haxe' ];
 
-          var ap = new ArgsParser();
+          var ap = new ArgsParser({});
           ap.parse(toParse);
       });
 
@@ -85,7 +95,7 @@ describe("ArgsParser testsuite", function(){
                           '--program',
                           'openfl' ];
 
-          var ap = new ArgsParser();
+          var ap = new ArgsParser({});
           ap.parse(toParse);
       });
 
@@ -106,7 +116,7 @@ describe("ArgsParser testsuite", function(){
                           'platforms',
                           'html5,flash,tizen'];
 
-          var ap = new ArgsParser();
+          var ap = new ArgsParser({});
           ap.parse(toParse);
       });
 
@@ -128,25 +138,12 @@ describe("ArgsParser testsuite", function(){
                           'html5',
                           'tizen'];
 
-          var ap = new ArgsParser();
+          var ap = new ArgsParser({});
           ap.parse(toParse);
       });
 
       it("parse method should dispatch a ConfigurationNotifications.DATA_UNAVAILABLE and fromArgsParser platforms arg is set with multiple strings instead of a coma separeted value", function(){
         expect(EventHub.emit).toHaveBeenCalledWith(ConfigurationNotifications.DATA_UNAVAILABLE, "fromArgsParser");
-      });
-    });
-
-    describe("ConfigurationNotifications.COMPLETE emitted test", function(){
-
-      beforeEach(function(){
-          spyOn(EventHub, "emit");
-          var ap = new ArgsParser();
-          ap.parse(argsToParse);
-      });
-
-      it("parse method should dispatch a ConfigurationNotifications.COMPLETE when it's specified the program and the builder on Haxe project", function(){
-        expect(EventHub.emit).toHaveBeenCalledWith(ConfigurationNotifications.COMPLETE, jasmine.any(Object));
       });
     });
 
