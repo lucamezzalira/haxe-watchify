@@ -21,7 +21,6 @@ function ConfigurationModel(){
     getPlatforms: getOpenFLPlatforms,
     getBuildType: getBuildType,
     getLivereloadPath: getLivereloadPath,
-    
     getSrcPath: getSrcPath
   }
 }
