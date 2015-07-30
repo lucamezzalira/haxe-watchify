@@ -3,9 +3,14 @@ var EventHub = require("../../src/notifications/EventHub");
 var ConfigurationNotifications = require('../../src/notifications/ConfigurationNotifications');
 
 describe("ArgsParser testsuite", function(){
+  var modelMock;
 
   beforeEach(function(){
-    var modelMock = {};
+    modelMock = {
+      setData: function(data){
+
+      }
+    };
     this.argsParser = new ArgsParser(modelMock);
   });
 
@@ -139,19 +144,6 @@ describe("ArgsParser testsuite", function(){
 
       it("parse method should dispatch a ConfigurationNotifications.DATA_UNAVAILABLE and fromArgsParser platforms arg is set with multiple strings instead of a coma separeted value", function(){
         expect(EventHub.emit).toHaveBeenCalledWith(ConfigurationNotifications.DATA_UNAVAILABLE, "fromArgsParser");
-      });
-    });
-
-    describe("ConfigurationNotifications.COMPLETE emitted test", function(){
-
-      beforeEach(function(){
-          spyOn(EventHub, "emit");
-          var ap = new ArgsParser({setData:function(){}});
-          ap.parse(argsToParse);
-      });
-
-      it("parse method should dispatch a ConfigurationNotifications.COMPLETE when it's specified the program and the builder on Haxe project", function(){
-        expect(EventHub.emit).toHaveBeenCalledWith(ConfigurationNotifications.COMPLETE, jasmine.any(Object));
       });
     });
 
