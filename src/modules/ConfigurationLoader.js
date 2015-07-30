@@ -42,8 +42,6 @@ function handleLoadResults(error, data){
     }
 
     mainModel.setData(jsonData);
-
-    EventHub.emit(ConfigurationNotifications.COMPLETE, mainModel);
 }
 
 module.exports = ConfigurationLoader;

@@ -1,3 +1,6 @@
+var EventHub = require('../notifications/EventHub');
+var ConfigurationNotifications = require('../notifications/ConfigurationNotifications');
+
 var DEFAULT_COMPILER = "local";
 var DEFAULT_PATH = "./";
 var DEFAULT_BUILD_TYPE = "build";
@@ -82,6 +85,8 @@ function setRawData(data){
   }
 
   configData = data.build;
+
+  EventHub.emit(ConfigurationNotifications.COMPLETE);
 }
 
 module.exports = ConfigurationModel;

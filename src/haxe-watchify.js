@@ -40,18 +40,18 @@ function onDataUnavailable(fromModule){
   config.load();
 }
 
-function onConfigReady(configuration){
-  setupCompiler(configuration);
+function onConfigReady(){
+  setupCompiler(model);
   createFilesManager();
-  createWatcher(configuration);
-  createLiveReload(configuration.getLivereloadPath());
+  createWatcher(model);
+  createLiveReload(model.getLivereloadPath());
 }
 
-function setupCompiler(configuration){
-  if(configuration.getProgram() === "openfl"){
-    compiler = new OpenFLCompiler(configuration);
+function setupCompiler(model){
+  if(model.getProgram() === "openfl"){
+    compiler = new OpenFLCompiler(model);
   } else {
-    compiler = new HaxeCompiler(configuration);
+    compiler = new HaxeCompiler(model);
   }
 }
 
@@ -60,13 +60,13 @@ function createArgsParser(){
   parser.parse(process.argv);
 }
 
-function createFilesManager(configuration){
+function createFilesManager(){
   var filesManager = new FilesManager();
   filesManager.init();
 }
 
-function createWatcher(config){
-  var watcher = new Watcher(config);
+function createWatcher(model){
+  var watcher = new Watcher(model);
   watcher.init();
 }
 

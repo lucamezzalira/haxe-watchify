@@ -36,7 +36,7 @@ function parse(args){
   if(!isHaxeBuildDefined() && !isOpenFLBuildDefined()){
     EventHub.emit(ConfigurationNotifications.DATA_UNAVAILABLE, "fromArgsParser");
   } else {
-    EventHub.emit(ConfigurationNotifications.COMPLETE, popolateModel());
+    popolateModel();
   }
 }
 
@@ -60,8 +60,6 @@ function popolateModel(){
   };
 
   mainModel.setData(data);
-
-  return mainModel;
 }
 
 function isHaxeBuildDefined(){
