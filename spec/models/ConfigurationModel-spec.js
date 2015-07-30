@@ -2,15 +2,15 @@ var ConfigurationModel = require("../../src/models/ConfigurationModel");
 
 describe("ConfigurationModel testsuite", function(){
 
+  beforeEach(function(){
+    this.model = new ConfigurationModel();
+  });
+
+  afterEach(function(){
+    this.model = null;
+  });
+
   describe("Setup ConfigurationModel", function(){
-
-    beforeEach(function(){
-      this.model = new ConfigurationModel();
-    });
-
-    afterEach(function(){
-      this.model = null;
-    });
 
     it("create ConfigurationModel", function(){
       expect(this.model).toBeDefined();
@@ -63,14 +63,6 @@ describe("ConfigurationModel testsuite", function(){
 
   describe("test setData method", function(){
 
-    beforeEach(function(){
-      this.model = new ConfigurationModel();
-    });
-
-    afterEach(function(){
-      this.model = null;
-    });
-
     it("should be called with an Object as parameter", function(){
       var model = this.model;
       var callSetData = function(){
@@ -107,14 +99,6 @@ describe("ConfigurationModel testsuite", function(){
 
   describe("test getCompilerType method", function(){
 
-    beforeEach(function(){
-      this.model = new ConfigurationModel();
-    });
-
-    afterEach(function(){
-      this.model = null;
-    });
-
     it("should return 'server' as compiler when it is set as server", function(){
       var compilerChosen = "server";
       this.model.setData({
@@ -136,14 +120,6 @@ describe("ConfigurationModel testsuite", function(){
   });
 
   describe("test getHXML method", function(){
-
-    beforeEach(function(){
-      this.model = new ConfigurationModel();
-    });
-
-    afterEach(function(){
-      this.model = null;
-    });
 
     it("should return the hxml file set in the build configuration object", function(){
       var hxmlFile = "file.hxml";
@@ -171,14 +147,6 @@ describe("ConfigurationModel testsuite", function(){
 
   describe("test getParameters method", function(){
 
-    beforeEach(function(){
-      this.model = new ConfigurationModel();
-    });
-
-    afterEach(function(){
-      this.model = null;
-    });
-
     it("should return the parameters Object set in the build configuration object", function(){
       var paramsObj = {
           cp: "Source",
@@ -200,6 +168,165 @@ describe("ConfigurationModel testsuite", function(){
       });
 
       expect(this.model.getParameters()).toBe(undefined);
+    });
+  });
+
+  describe("test getPort method", function(){
+
+    it("should return the port number set in the build configuration object", function(){
+      var port = 3030;
+      this.model.setData({
+        build: {
+          port: port
+        }
+      });
+
+      expect(this.model.getPort()).toEqual(port);
+    });
+
+    it("should return the default port if port is not set", function(){
+      var defaultPort = 6000;
+      this.model.setData({
+        build: {
+        }
+      });
+
+      expect(this.model.getPort()).toBe(defaultPort);
+    });
+  });
+
+  describe("test getProgram method", function(){
+
+    it("should return the program set in the build configuration object", function(){
+      var program = "openfl";
+      this.model.setData({
+        build: {
+          program: program
+        }
+      });
+
+      expect(this.model.getProgram()).toEqual(program);
+    });
+
+    it("should return the default program so 'haxe' if program is not set", function(){
+      var defaultProgram = 'haxe';
+      this.model.setData({
+        build: {
+        }
+      });
+
+      expect(this.model.getProgram()).toBe(defaultProgram);
+    });
+  });
+
+  describe("test getPlatforms method", function(){
+
+    it("should return the program set in the build configuration object", function(){
+      var platforms = ["html5", "flash", "tizen"];
+      this.model.setData({
+        build: {
+          platforms: platforms
+        }
+      });
+
+      expect(this.model.getPlatforms()).not.toBeUndefined();
+      expect(this.model.getPlatforms().length).toEqual(3);
+      expect(this.model.getPlatforms()).toEqual(jasmine.arrayContaining(platforms));
+    });
+
+    it("should return an empty array if platforms are not set", function(){
+      this.model.setData({
+        build: {
+        }
+      });
+
+      expect(this.model.getPlatforms()).toEqual([]);
+    });
+  });
+
+  describe("test getBuildType method", function(){
+
+    it("should return the buildtype set in the build configuration object", function(){
+      var buildtype = "test";
+      this.model.setData({
+        build: {
+          buildType: buildtype
+        }
+      });
+
+      expect(this.model.getBuildType()).toEqual(buildtype);
+    });
+
+    it("should return the default buildType if buildType are not set", function(){
+      var defaultBuildType = "build";
+      this.model.setData({
+        build: {
+        }
+      });
+
+      expect(this.model.getBuildType()).toEqual(defaultBuildType);
+    });
+
+    it("should return the default buildType if livereload parameter is set are not set", function(){
+      var defaultBuildType = "build";
+      var buildtype = "test";
+      this.model.setData({
+        build: {
+          buildType: buildtype,
+          livereload: "bin"
+        }
+      });
+
+      expect(this.model.getBuildType()).toEqual(defaultBuildType);
+    });
+  });
+
+  describe("test getLivereloadPath method", function(){
+
+    it("should return the livereload path to watch if set in the build configuration object", function(){
+      var path = "bin";
+      this.model.setData({
+        build: {
+          livereload: path
+        }
+      });
+
+      expect(this.model.getLivereloadPath()).not.toBeUndefined();
+      expect(this.model.getLivereloadPath()).toEqual(path);
+    });
+
+    it("should return an undefined object if livereload is not set", function(){
+      this.model.setData({
+        build: {
+        }
+      });
+
+      expect(this.model.getLivereloadPath()).toBeUndefined();
+    });
+  });
+
+  describe("test getSrcPath method", function(){
+
+    it("should return the source path if set in the build configuration object", function(){
+      var src = "src";
+      this.model.setData({
+        build: {
+          src: src
+        }
+      });
+
+      expect(this.model.getSrcPath()).not.toBeUndefined();
+      expect(this.model.getSrcPath()).toEqual(src);
+    });
+
+    it("should return the default source path ./ if src is not set", function(){
+      var defaultPath = "./";
+      this.model.setData({
+        build: {
+        }
+      });
+
+      expect(this.model.getSrcPath()).toEqual(defaultPath);
     });
   });
 

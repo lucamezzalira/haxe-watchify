@@ -2,6 +2,7 @@ var DEFAULT_COMPILER = "local";
 var DEFAULT_PATH = "./";
 var DEFAULT_BUILD_TYPE = "build";
 var DEFAULT_PORT = 6000;
+var DEFAULT_PROGRAM = "haxe";
 var HXML_EXT = "hxml";
 var configData;
 
@@ -14,13 +15,13 @@ function ConfigurationModel(){
     getCompilerType: getCompiler,
     getHXML: getHXMLFile,
     getParameters: getParameters,
-    
     getPort: getServerPort,
     getCmd: getCmdCommand,
     getProgram: getProgramDefined,
     getPlatforms: getOpenFLPlatforms,
     getBuildType: getBuildType,
     getLivereloadPath: getLivereloadPath,
+    
     getSrcPath: getSrcPath
   }
 }
@@ -65,11 +66,11 @@ function getServerPort(){
 }
 
 function getOpenFLPlatforms(){
-  return configData.platforms;
+  return configData.platforms || [];
 }
 
 function getProgramDefined(){
-  return configData.program;
+  return configData.program || DEFAULT_PROGRAM;
 }
 
 function setRawData(data){
