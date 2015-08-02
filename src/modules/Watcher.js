@@ -7,10 +7,9 @@ var FILES_EXTENSIONS = '/**/*.(hx|hxml|nmml|jpg|jpeg|gif|png|xml|json|yml|css|ht
 var DEFAULT_INTERVAL = 500;
 var DEFAULT_EXCLUDED_FOLDERS = "output|dist|bin|export|Export|.idea";
 
-var watcher, isOpenFL, src, exludedFoldersRegEx;
+var watcher, src, exludedFoldersRegEx;
 
 function Watcher(config){
-  isOpenFL = (config.getProgram() === "openfl") ? true : false;
   src = config.getSrcPath();
   var folders = (config.getLivereloadPath()) ? "|" + config.getLivereloadPath() : "";
   exludedFoldersRegEx = new RegExp("^("+ DEFAULT_EXCLUDED_FOLDERS + folders + ")$");
