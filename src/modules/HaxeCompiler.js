@@ -1,6 +1,7 @@
 var exec = require('child_process').exec;
 var EventHub = require('../notifications/EventHub');
 var Console = require('./Console');
+var cmdOpts = require('../utils/DefaultCMDOptions');
 var FilesManagerNotifications = require("../notifications/FilesManagerNotifications");
 
 var LOCAL_COMPILER = "haxe";
@@ -50,7 +51,7 @@ function launchBuild(){
     process.exit(1);
   }
 
-  exec(cmdToExec, handleBuildResults);
+  exec(cmdToExec, cmdOpts, handleBuildResults);
 }
 
 function handleBuildResults(error, stdout, stderr){
