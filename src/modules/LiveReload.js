@@ -1,6 +1,7 @@
 var exec = require('child_process').exec;
 var path = require('path');
 var Console = require('./Console');
+var cmdOpts = require('../utils/DefaultCMDOptions');
 
 var DEFAULT_URL = "http://localhost:35729";
 var LIVERELOAD_COMMAND = "livereloadx.js -s -p 35729 ";
@@ -16,14 +17,14 @@ function LiveReload(){
 }
 
 function close(){
-  livereloadx.kill("SIGINT");
+  livereloadx.kill("SIGTERM");
 }
 
 function start(src){
   if(src){
     var normalizePath = path.normalize(src);
     Console.livereloadStarted(DEFAULT_URL);
-    livereloadx = exec(getLivereloadCommand(normalizePath), handleServerResult);
+    livereloadx = exec(getLivereloadCommand(normalizePath), cmdOpts, handleServerResult);
   }
 }
 

@@ -1,10 +1,10 @@
 {
   "name": "haxe-watchify",
-  "url" : "https://github.com/jasononeil/useless/",
+  "url" : "https://github.com/lucamezzalira/haxe-watchify",
   "license": "MIT",
   "tags": ["haxe", "watchify", "watch", "cli", "tools", "cli tools"],
   "description": "",
-  "version": "1.0.0",
+  "version": "1.2.1",
   "releasenote": "Initial release, everything is working correctly.",
   "contributors": ["Luca Mezzalira"],
   "dependencies": {}
