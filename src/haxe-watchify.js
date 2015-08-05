@@ -14,6 +14,7 @@ var OpenFLCompiler = require('./modules/OpenFLCompiler');
 var Console = require('./modules/Console');
 var LiveReload = require('./modules/LiveReload');
 var WebSocket = require('./modules/WebSocket');
+var WebServer = require('./modules/WebServer');
 var ConfigurationModel = require('./models/ConfigurationModel');
 
 var compiler, model;
@@ -51,8 +52,10 @@ function onConfigReady(){
 
 function createMonitorServer(model){
   if(model.getMonitorType() === "web"){
-    var ws = new WebSocket();
-    setTimeout(ws.start, 5000);
+    var websocket = new WebSocket();
+    websocket.start();
+    var webserver = new WebServer();
+    webserver.start();
   }
 }
 

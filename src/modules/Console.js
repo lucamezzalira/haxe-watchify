@@ -3,7 +3,7 @@ var ConsoleMessages = require('../messages/ConsoleMessages');
 var EventHub = require('../notifications/EventHub');
 var WebSocketNotifications = require('../notifications/WebSocketNotifications');
 
-var log;
+var log, timeStart;
 
 function Console(){
   log = customLog;
@@ -40,12 +40,12 @@ function customLog(){
   EventHub.emit(WebSocketNotifications.SEND_MESSAGE, textToShow);
 }
 
-function startTimer(id){
-  console.time(id);
+function startTimer(){
+  timeStart = new Date().getTime();
 }
 
 function stopTimer(id){
-  console.timeEnd(id);
+  log(ConsoleMessages.TOTAL_OPERATION_TIME + (new Date().getTime() - timeStart)/1000 + "s");
   genericTerminalMessage(new Date().toGMTString());
   genericTerminalMessage("");
 }
@@ -54,8 +54,8 @@ function livereloadStarted(url){
   log(chalk.underline(ConsoleMessages.LIVERELOAD_READY + " " + url));
 }
 
-function monitorStart(url){
-  log(chalk.underline(ConsoleMessages.MONITOR_START + " " + url));
+function monitorStart(){
+  log(chalk.underline(ConsoleMessages.MONITOR_START));
 }
 
 function monitorError(){

@@ -3,14 +3,22 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
-    <title>ws</title>
-    <link rel="stylesheet" media="all" href="monitor.css"/>
+    <title>haxe-watchify monitor</title>
+    <link rel="stylesheet" media="all" href="style.css"/>
     <script type="text/javascript" src="http://cdn.socket.io/socket.io-1.3.6.js"></script>
     <script>
     var fontSize;
 
     function init(){
-      var socket = io('http://192.168.0.7:9933/monitor');
+      var evtToListen = 'mouseup';
+      if(typeof window.orientation !== 'undefined'){
+        evtToListen = 'touchend';
+      }
+
+      document.getElementById("increaseBtn").addEventListener(evtToListen, increaseFontSize);
+      document.getElementById("decreaseBtn").addEventListener(evtToListen, decreaseFontSize);
+
+      var socket = io('http://192.168.0.5:9933/monitor');
       socket.on("connect", onConnect);
       socket.on('error', onError);
       socket.on('connection-info', addP);
@@ -39,7 +47,7 @@
       document.body.style.fontSize = fontSize + "px";
     }
 
-    function descreaseFontSize(){
+    function decreaseFontSize(){
       fontSize--;
       document.body.style.fontSize = fontSize + "px";
     }
@@ -48,8 +56,8 @@
   <body onload="init()">
     <div id="logContainer">
     <div id="buttonContainer">
-      <a href="#" class="button" ontouchend="increaseFontSize()">A</a>
-      <a href="#" class="button" ontouchend="descreaseFontSize()">a</a>
+      <a href="#" class="button" id="increaseBtn">A</a>
+      <a href="#" class="button" id="decreaseBtn">a</a>
     </div>
   </body>
 </html>

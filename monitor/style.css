@@ -1,7 +1,7 @@
 body, html{
   background-color: #000;
   color: #FFF;
-  font-size: 11px;
+  font-size: 12px;
   font-family: monaco,Consolas,Lucida Console,monospace;
 }
 .welcome{
@@ -13,9 +13,9 @@ body, html{
 #buttonContainer{
   float: left;
   position: fixed;
+  z-index: 999;
   top: 5%;
   right: 5%;
-  z-index: 999;
 }
 #logContainer{
   -webkit-user-select: none;  /* Chrome all / Safari all */
@@ -56,6 +56,7 @@ a.button:active{
   }
 
   #buttonContainer{
+    display: block;
     top: 35%;
     right: 5%;
   }
@@ -71,6 +72,7 @@ a.button:active{
   }
 
   #buttonContainer{
+    display: block;
     float: none;
     top: 35%;
     right: 5%;

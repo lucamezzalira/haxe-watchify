@@ -5,8 +5,9 @@ module.exports = {
   FILE_CHANGED: "file changed:",
   FILE_ADDED: "file added:",
   BUILD_STARTED: "building",
+  TOTAL_OPERATION_TIME: "Total building time: ",
   BUILD_OPENFL_FINISHED: "platform ready",
-  LIVERELOAD_READY: "live reload is starting at:",
+  LIVERELOAD_READY: "live reload is available at:",
   LIVERELOAD_ERROR: "error starting livereload server!",
   BUILD_FINISHED: "build complete!",
   ERROR_LOADING_CONFIG_FILE: "error loading hx-watch.json: ",
@@ -22,7 +23,7 @@ module.exports = {
   LIVERELOAD_HELP_DESCR: "set the local folder where the server will point",
   COMPILER_HELP_DESCR: "set value \'server\' to use the completion server. The default value is \'local\'",
   MONITOR_HELP_DESCR: "set value \'web\' in order to start the monitor server",
-  MONITOR_ERROR: "monitor server is unable to start, please check the port 9933 is available on your network configuration",
-  MONITOR_START: "monitor server is available at:",
+  MONITOR_ERROR: "monitor server is unable to start, please check the port 30000 is available on your network configuration",
+  MONITOR_START: "monitor server is available at http://localhost:30000/monitor.html",
   WATCHER_ERROR: "unfortunately there was an error with haxe-watchify, please restart"
 }
