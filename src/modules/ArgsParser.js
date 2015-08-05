@@ -31,6 +31,7 @@ function parse(args){
   .option('--src <value>', ConsoleMessages.SOURCE_FOLDER_HELP_DESCR)
   .option('--livereload <value>', ConsoleMessages.LIVERELOAD_HELP_DESCR)
   .option('--platforms <values>', ConsoleMessages.PLATFORMS_HELP_DESCR, splitPlatforms)
+  .option('--monitor <values>', ConsoleMessages.MONITOR_HELP_DESCR, 'web')
   .parse(argsToParse);
 
   if(!isHaxeBuildDefined() && !isOpenFLBuildDefined()){
@@ -55,6 +56,7 @@ function popolateModel(){
       "buildType": commander.buildType,
       "src": commander.src,
       "livereload" : commander.livereload,
+      "monitor" : commander.monitor,
       "params" : {}
     }
   };

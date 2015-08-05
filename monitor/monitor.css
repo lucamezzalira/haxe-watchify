@@ -1,0 +1,78 @@
+body, html{
+  background-color: #000;
+  color: #FFF;
+  font-size: 11px;
+  font-family: monaco,Consolas,Lucida Console,monospace;
+}
+.welcome{
+  background-color:#0A0;
+}
+.error{
+  background-color:#A00;
+}
+#buttonContainer{
+  float: left;
+  position: fixed;
+  top: 5%;
+  right: 5%;
+  z-index: 999;
+}
+#logContainer{
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;
+  -webkit-touch-callout: none !important;
+}
+a.button {
+  -webkit-touch-callout: none !important;
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;
+  display: block;
+  background: #00AA00;
+  height: 15px;
+  width: 15px;
+  text-align: center;
+  padding: 20px;
+  margin: 4px;
+  color: #fff;
+  font-size: 25px;
+  font-weight: bold;
+  text-decoration: none;
+  border: solid 3px #008300;
+}
+
+a.button:active{
+  background: #008300;
+  color: #333;
+}
+
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  body{
+    font-size: 12px;
+  }
+
+  #buttonContainer{
+    top: 35%;
+    right: 5%;
+  }
+}
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 479px) {
+  body{
+    font-size: 14px;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  #buttonContainer{
+    float: none;
+    top: 35%;
+    right: 5%;
+  }
+}

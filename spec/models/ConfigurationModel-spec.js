@@ -59,6 +59,10 @@ describe("ConfigurationModel testsuite", function(){
     it("should have a getSrcPath method", function(){
       expect(this.model.getSrcPath).toEqual(jasmine.any(Function));
     });
+
+    it("should have a getMonitorType method", function(){
+      expect(this.model.getMonitorType).toEqual(jasmine.any(Function));
+    });
   });
 
   describe("test setData method", function(){
@@ -330,4 +334,27 @@ describe("ConfigurationModel testsuite", function(){
     });
   });
 
+  describe("test getMonitorType method", function(){
+
+    it("should return the monitor type if set in the build configuration object", function(){
+      var type = "web";
+      this.model.setData({
+        build: {
+          monitor: type
+        }
+      });
+
+      expect(this.model.getMonitorType()).not.toBeUndefined();
+      expect(this.model.getMonitorType()).toEqual(type);
+    });
+
+    it("should return an undefined object if monitor is not set", function(){
+      this.model.setData({
+        build: {
+        }
+      });
+
+      expect(this.model.getMonitorType()).toBeUndefined();
+    });
+  });
 })

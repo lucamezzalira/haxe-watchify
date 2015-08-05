@@ -1,10 +1,12 @@
 var chalk = require("chalk");
 var ConsoleMessages = require('../messages/ConsoleMessages');
+var EventHub = require('../notifications/EventHub');
+var WebSocketNotifications = require('../notifications/WebSocketNotifications');
 
 var log;
 
 function Console(){
-  log = console.log.bind(console);
+  log = customLog;
 
   return {
     terminalMessage: genericTerminalMessage,
@@ -26,8 +28,16 @@ function Console(){
     livereloadStarted: livereloadStarted,
     livereloadError: livereloadError,
     startTimer: startTimer,
-    stopTimer: stopTimer
+    stopTimer: stopTimer,
+    monitorError: monitorError,
+    monitorStart: monitorStart
   }
+}
+
+function customLog(){
+  var textToShow = [].slice.call(arguments).toString().replace(",", " ");
+  console.log(textToShow);
+  EventHub.emit(WebSocketNotifications.SEND_MESSAGE, textToShow);
 }
 
 function startTimer(id){
@@ -44,6 +54,14 @@ function livereloadStarted(url){
   log(chalk.underline(ConsoleMessages.LIVERELOAD_READY + " " + url));
 }
 
+function monitorStart(url){
+  log(chalk.underline(ConsoleMessages.MONITOR_START + " " + url));
+}
+
+function monitorError(){
+  log(chalk.bgRed(ConsoleMessages.MONITOR_ERROR));
+}
+
 function livereloadError(error){
   log(chalk.bgRed(ConsoleMessages.LIVERELOAD_ERROR + " " + error));
 }
@@ -53,7 +71,7 @@ function missingParamsAndConfigFile(){
 }
 
 function openflBuildMessage(platform){
-  log(chalk.green(platform + " " + ConsoleMessages.BUILD_OPENFL_FINISHED));
+  log(chalk.bgGreen(platform + " " + ConsoleMessages.BUILD_OPENFL_FINISHED));
 }
 
 function errorOnLoadingConfigurationFile(error){

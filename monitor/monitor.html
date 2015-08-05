@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
+    <title>ws</title>
+    <link rel="stylesheet" media="all" href="monitor.css"/>
+    <script type="text/javascript" src="http://cdn.socket.io/socket.io-1.3.6.js"></script>
+    <script>
+    var fontSize;
+
+    function init(){
+      var socket = io('http://192.168.0.7:9933/monitor');
+      socket.on("connect", onConnect);
+      socket.on('error', onError);
+      socket.on('connection-info', addP);
+      socket.on('messages', addP);
+
+      fontSize = parseFloat(window.getComputedStyle(document.body, null).getPropertyValue('font-size'));
+    }
+
+    function onConnect(){
+      addP("<span class='welcome'>haxe-watchify monitor ready</span>");
+    }
+
+    function onError(){
+      addP("<span class='error'>error trying to connect haxe-watchify monitor! verify your network settings</span>");
+    }
+
+    function addP(text){
+      var p = document.createElement("p");
+      p.innerHTML = text;
+      document.getElementById("logContainer").appendChild(p);
+      window.scrollTo(0,document.body.scrollHeight);
+    }
+
+    function increaseFontSize(){
+      fontSize++;
+      document.body.style.fontSize = fontSize + "px";
+    }
+
+    function descreaseFontSize(){
+      fontSize--;
+      document.body.style.fontSize = fontSize + "px";
+    }
+    </script>
+  </head>
+  <body onload="init()">
+    <div id="logContainer">
+    <div id="buttonContainer">
+      <a href="#" class="button" ontouchend="increaseFontSize()">A</a>
+      <a href="#" class="button" ontouchend="descreaseFontSize()">a</a>
+    </div>
+  </body>
+</html>

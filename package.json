@@ -5,14 +5,16 @@
   "author": "luca mezzalira",
   "license": "MIT",
   "dependencies": {
+    "ansi-to-html": "^0.3.0",
     "chalk": "^1.0.0",
     "chokidar": "1.0.5",
     "commander": "^2.8.1",
-    "livereloadx": "^0.3.8"
+    "livereloadx": "^0.3.8",
+    "socket.io": "^1.3.6"
   },
   "scripts": {
     "test": "istanbul test jasmine spec/**/*.js",
-    "testAndCoverage" : "npm run test --coverage",
+    "testAndCoverage": "npm run test --coverage",
     "static-analysis": "plato -r -d report src",
     "gen-change-log": "github_changelog_generator lucamezzalira/haxe-watchify"
   },

@@ -13,6 +13,7 @@ var HaxeCompiler = require('./modules/HaxeCompiler');
 var OpenFLCompiler = require('./modules/OpenFLCompiler');
 var Console = require('./modules/Console');
 var LiveReload = require('./modules/LiveReload');
+var WebSocket = require('./modules/WebSocket');
 var ConfigurationModel = require('./models/ConfigurationModel');
 
 var compiler, model;
@@ -41,10 +42,18 @@ function onDataUnavailable(fromModule){
 }
 
 function onConfigReady(){
+  createMonitorServer(model);
   setupCompiler(model);
   createFilesManager();
   createWatcher(model);
   createLiveReload(model.getLivereloadPath());
+}
+
+function createMonitorServer(model){
+  if(model.getMonitorType() === "web"){
+    var ws = new WebSocket();
+    setTimeout(ws.start, 5000);
+  }
 }
 
 function setupCompiler(model){

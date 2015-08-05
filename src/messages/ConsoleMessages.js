@@ -20,6 +20,9 @@ module.exports = {
   BUILD_TYPE_HELP_DESCR: "set the command to use on OpenFL targets: build or test. The defualt value is \'build\'",
   MISSING_PARAMS: "missing hxml file or parameters to build the project",
   LIVERELOAD_HELP_DESCR: "set the local folder where the server will point",
-  COMPILER_HELP_DESCR: "set \'server\' to use the completion server. The default value is \'local\'",
+  COMPILER_HELP_DESCR: "set value \'server\' to use the completion server. The default value is \'local\'",
+  MONITOR_HELP_DESCR: "set value \'web\' in order to start the monitor server",
+  MONITOR_ERROR: "monitor server is unable to start, please check the port 9933 is available on your network configuration",
+  MONITOR_START: "monitor server is available at:",
   WATCHER_ERROR: "unfortunately there was an error with haxe-watchify, please restart"
 }
