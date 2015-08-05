@@ -35,7 +35,9 @@ function getFileExt(file){
 function sendStaticFile(response, file, type){
   fs.readFile(__dirname + "/../../monitor" + file, function(err, data){
     if(err){
-      response.writeHead(404);
+      response.writeHead(404, {"Content-Type": "text/plain"});
+      response.write("404 Not Found\n");
+      response.end();
       return;
     }
 

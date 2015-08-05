@@ -47,6 +47,5 @@ function onConnect(socket){
 //TODO: update website
 //TODO: test cli
 //TODO: add IP input in monitor.html
-//TODO: bug desktop monitor increase/decrease font
 
 module.exports = WebSocket;
