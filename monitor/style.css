@@ -24,6 +24,18 @@ body, html{
   user-select: none;
   -webkit-touch-callout: none !important;
 }
+#ipContainer{
+  width: 400px;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+}
+#ipField{
+    color: #0A0;
+    border: 0;
+    font-size: 40px;
+}
 a.button {
   -webkit-touch-callout: none !important;
   -webkit-user-select: none;  /* Chrome all / Safari all */

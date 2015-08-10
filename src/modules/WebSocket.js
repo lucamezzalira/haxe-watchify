@@ -43,8 +43,6 @@ function onConnect(socket){
   //socketServer.on('disconnect', onDisconnect);
 }
 
-
-//TODO: update website
 //TODO: test cli
 //TODO: add IP input in monitor.html
 
