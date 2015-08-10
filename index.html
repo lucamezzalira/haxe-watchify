@@ -195,6 +195,33 @@ Live reload is exclusively watching the folder you've specified in the configura
 </p>
 
 <h3>
+<a id="monitor" class="anchor" href="#monitor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Web Monitor</h3>
+
+<p>
+From version 1.3.0, Haxe-watchify introduces a web monitor that reproduce the command line output directly in a web page.<br>
+This feature could help you when you want to extend your working area but you don't have a second monitor, or to share with your fellows the building process of your Haxe project.
+<br>
+This is a quick video showing the web monitor functionality<br>
+<p>
+  <iframe src="https://www.youtube.com/embed/642TwxCkWsE" frameborder="0" allowfullscreen></iframe>
+</p>
+All you need to od in order to start the monitor server is set the <b>monitor</b> property with the value <b>web</b>.<br>
+<code>
+{<br>
+  &nbsp;&nbsp;"build": {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;"program" : "openfl",<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;"buildType" : "test", //set test or build as parameter<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;"src" : "Source",<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;"monitor" : "web",<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;"platforms" : ["flash", "tizen", "html5"]<br>
+  &nbsp;&nbsp;}<br>
+}
+</code>
+<br>
+If this feature will be used and requested by the community I'll be more than happy to create the mobile applications for iOS, Android and WP8.<br>
+</p>
+
+<h3>
 <a id="notes" class="anchor" href="#notes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes for Windows users</h3>
 <p>
   Haxe-watchify requires <b>Python 2.7.x</b> to be installed in your machine in order to work.
