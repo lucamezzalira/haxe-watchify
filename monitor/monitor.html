@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
     <title>haxe-watchify monitor</title>
     <link rel="stylesheet" media="all" href="style.css"/>
-    <script type="text/javascript" src="http://cdn.socket.io/socket.io-1.3.6.js"></script>
+    <script type="text/javascript" src="socket.io-1.3.6.js"></script>
     <script>
-    var fontSize;
+    var fontSize, socket;
 
     function init(){
       var evtToListen = 'mouseup';
@@ -18,21 +18,23 @@
       document.getElementById("increaseBtn").addEventListener(evtToListen, increaseFontSize);
       document.getElementById("decreaseBtn").addEventListener(evtToListen, decreaseFontSize);
 
-      var socket = io('http://192.168.0.5:9933/monitor');
-      socket.on("connect", onConnect);
-      socket.on('error', onError);
-      socket.on('connection-info', addP);
-      socket.on('messages', addP);
-
       fontSize = parseFloat(window.getComputedStyle(document.body, null).getPropertyValue('font-size'));
     }
 
     function onConnect(){
+      socket.off("connect", onConnect);
+      document.getElementById("ipContainer").style.display = "none";
       addP("<span class='welcome'>haxe-watchify monitor ready</span>");
     }
 
     function onError(){
-      addP("<span class='error'>error trying to connect haxe-watchify monitor! verify your network settings</span>");
+      alert('error trying to connect haxe-watchify monitor! Please verify your network settings');
+
+      socket.off('reconnect_error', onError);
+      socket.off('connect_timeout', onError);
+      socket.off('connect_error', onError);
+      socket.off('connection-info', addP);
+      socket.off('messages', addP);
     }
 
     function addP(text){
@@ -51,16 +53,33 @@
       fontSize--;
       document.body.style.fontSize = fontSize + "px";
     }
+
+    function checkIP(event){
+      var ip = document.getElementById("ipField").value.trim();
+      if(event.keyCode === 13 && ip !== ""){
+        connectToSocketServer(ip);
+      }
+    }
+
+    function connectToSocketServer(ip){
+      socket = io('http://'+ ip +':9933/monitor');
+      socket.on("connect", onConnect);
+      socket.on('reconnect_error', onError);
+      socket.on('connect_timeout', onError);
+      socket.on('connect_error', onError);
+      socket.on('connection-info', addP);
+      socket.on('messages', addP);
+    }
     </script>
   </head>
   <body onload="init()">
-    <div id="logContainer">
+    <div id="logContainer"/>
     <div id="buttonContainer">
       <a href="#" class="button" id="increaseBtn">A</a>
       <a href="#" class="button" id="decreaseBtn">a</a>
     </div>
     <div id="ipContainer">
-      <input id="ipField" type="textfield" alt="insert your computer's IP" placeholder="e.g.: 192.168.1.3">
+      <input id="ipField" type="text" alt="insert your computer's IP" placeholder="e.g.: 192.168.1.3" onkeydown="checkIP(event)">
     </div>
   </body>
 </html>

@@ -43,7 +43,4 @@ function onConnect(socket){
   //socketServer.on('disconnect', onDisconnect);
 }
 
-//TODO: test cli
-//TODO: add IP input in monitor.html
-
 module.exports = WebSocket;

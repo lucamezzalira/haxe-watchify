@@ -35,6 +35,25 @@ body, html{
     color: #0A0;
     border: 0;
     font-size: 40px;
+    background-color: #333;
+    border-radius: 5px;
+    padding: 5px;
+    text-align: center;
+}
+::-webkit-input-placeholder {
+   color: #565656;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #565656;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #565656;
+}
+
+:-ms-input-placeholder {
+   color: #565656;
 }
 a.button {
   -webkit-touch-callout: none !important;
@@ -88,5 +107,18 @@ a.button:active{
     float: none;
     top: 35%;
     right: 5%;
+  }
+
+  #ipContainer{
+    width: 250px;
+    margin-top: 20px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #ipField{
+      width: 100%;
+      font-size: 20px;
   }
 }

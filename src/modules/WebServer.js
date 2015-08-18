@@ -6,7 +6,8 @@ var Console = require('./Console');
 var DEFAULT_SERVER_PORT = 30000;
 var FILES_EXT = {
   html: 'text/html',
-  css: 'text/css'
+  css: 'text/css',
+  js: 'application/javascript'
 };
 
 function WebServer(){
@@ -25,7 +26,7 @@ function start(){
 
 function routeRequests(request, response){
   var fileRequest = request.url.toString();
-  sendStaticFile(response, fileRequest,FILES_EXT[getFileExt(fileRequest)]);
+  sendStaticFile(response, fileRequest, FILES_EXT[getFileExt(fileRequest)]);
 }
 
 function getFileExt(file){
@@ -33,6 +34,7 @@ function getFileExt(file){
 }
 
 function sendStaticFile(response, file, type){
+  //TODO: reply static server file
   fs.readFile(__dirname + "/../../monitor" + file, function(err, data){
     if(err){
       response.writeHead(404, {"Content-Type": "text/plain"});
@@ -41,6 +43,10 @@ function sendStaticFile(response, file, type){
       return;
     }
 
+    response.setHeader("Access-Control-Allow-Origin", "*");
+    response.setHeader("Access-Control-Allow-Headers", "X-Requested-With");
+    response.setHeader("Access-Control-Allow-Headers", "Content-Type");
+    response.setHeader("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");
     response.writeHead(200, {'Content-Type':  type});
     response.write(data);
     response.end();
