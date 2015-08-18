@@ -15,10 +15,10 @@
 <div class="header high">
     <h1>Code coverage report for <span class="entity">src/models/ConfigurationModel.js</span></h1>
     <h2>
-        Statements: <span class="metric">97.62% <small>(41 / 42)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">97.87% <small>(46 / 47)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Branches: <span class="metric">100% <small>(22 / 22)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Functions: <span class="metric">91.67% <small>(11 / 12)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">97.62% <small>(41 / 42)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">92.31% <small>(12 / 13)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">97.87% <small>(46 / 47)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">src/models/</a> &#187; ConfigurationModel.js</div>
@@ -112,21 +112,32 @@
 85
 86
 87
-88</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">35</span>
+<span class="cline-any cline-yes">38</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">35</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -137,6 +148,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">3</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
@@ -187,19 +205,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">23</span>
+<span class="cline-any cline-yes">25</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-yes">24</span>
 <span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">var DEFAULT_COMPILER = "local";
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">var EventHub = require('../notifications/EventHub');
+var ConfigurationNotifications = require('../notifications/ConfigurationNotifications');
+&nbsp;
+var DEFAULT_COMPILER = "local";
 var DEFAULT_PATH = "./";
 var DEFAULT_BUILD_TYPE = "build";
 var DEFAULT_PORT = 6000;
@@ -222,8 +245,13 @@ function ConfigurationModel(){
     getPlatforms: getOpenFLPlatforms,
     getBuildType: getBuildType,
     getLivereloadPath: getLivereloadPath,
-    getSrcPath: getSrcPath
+    getSrcPath: getSrcPath,
+    getMonitorType: getMonitorType
   }
+}
+&nbsp;
+function getMonitorType(){
+  return configData.monitor;
 }
 &nbsp;
 function getLivereloadPath(){
@@ -283,6 +311,8 @@ function setRawData(data){
   }
 &nbsp;
   configData = data.build;
+&nbsp;
+  EventHub.emit(ConfigurationNotifications.COMPLETE);
 }
 &nbsp;
 module.exports = ConfigurationModel;
@@ -291,7 +321,7 @@ module.exports = ConfigurationModel;
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Jul 30 2015 23:12:57 GMT+0100 (BST)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Aug 05 2015 17:12:32 GMT+0100 (BST)</div>
 </div>
 <script src="../../prettify.js"></script>
 <script>

@@ -2,9 +2,9 @@ var exec = require('child_process').exec;
 var path = require('path');
 var Console = require('./Console');
 var cmdOpts = require('../utils/DefaultCMDOptions');
-
-var DEFAULT_URL = "http://localhost:35729";
-var LIVERELOAD_COMMAND = "livereloadx.js -s -p 35729 ";
+var DEFAULT_PORT = "35729";
+var DEFAULT_URL = "http://localhost:" + DEFAULT_PORT;
+var LIVERELOAD_COMMAND = "livereloadx.js -s -p "+ DEFAULT_PORT +" ";
 var livereloadPath, livereloadx;
 
 function LiveReload(){

@@ -1,4 +1,4 @@
 module.exports = {
-  killSignal: 'SIGTERM',
-  maxBuffer : 500*1024
+  killSignal: 'SIGKILL',
+  maxBuffer : 600*1024
 };

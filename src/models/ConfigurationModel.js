@@ -24,8 +24,13 @@ function ConfigurationModel(){
     getPlatforms: getOpenFLPlatforms,
     getBuildType: getBuildType,
     getLivereloadPath: getLivereloadPath,
-    getSrcPath: getSrcPath
+    getSrcPath: getSrcPath,
+    getMonitorType: getMonitorType
   }
+}
+
+function getMonitorType(){
+  return configData.monitor;
 }
 
 function getLivereloadPath(){

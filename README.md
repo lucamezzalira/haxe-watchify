@@ -1,6 +1,6 @@
 ![haxe-watchify logo](https://github.com/lucamezzalira/haxe-watchify/blob/master/logo.png)
 
-# Haxe-watchify
+# [Haxe-watchify](http://www.haxe-watchify.com)
 
 Haxe-watchify is a command line daemon that check any files changes in your Haxe project and run the build automatically in background.
 
