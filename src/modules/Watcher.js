@@ -19,9 +19,20 @@ function Watcher(config){
   }
 }
 
+function normalizeSrc(src){
+  var result = [];
+
+  if (!Array.isArray(src)) 
+    EventHub.emit(WatcherNotifications.ERROR, "fail to process --src options");
+  
+  for (i = 0; i < src.length; i++)
+    result.push(path.normalize(src[i] + FILES_EXTENSIONS));
+  return result;
+}
+
 function initialise(){
-  var srcFolder = path.normalize(src + FILES_EXTENSIONS);
-  var rulesPaths = [srcFolder];
+
+  var rulesPaths = normalizeSrc(src);
 
   watcher = chokidar.watch(rulesPaths, {
     ignored: exludedFoldersRegEx,

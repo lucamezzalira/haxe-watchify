@@ -15,6 +15,11 @@ function ArgsParser(configurationModel){
   };
 }
 
+function collectSrc(val, memo) {
+  memo.push(val);
+  return memo;
+}
+
 function parse(args){
   var argsToParse = args;
   if(!argsToParse){
@@ -28,7 +33,7 @@ function parse(args){
   .option('--compiler <value>', ConsoleMessages.COMPILER_HELP_DESCR, /^(server|local)$/i, 'local')
   .option('--port <value>', ConsoleMessages.PORT_HELP_DESCR)
   .option('--buildType <value>', ConsoleMessages.BUILD_TYPE_HELP_DESCR, /^(build|test)$/i, 'build')
-  .option('--src <value>', ConsoleMessages.SOURCE_FOLDER_HELP_DESCR)
+  .option('--src [value]', ConsoleMessages.SOURCE_FOLDER_HELP_DESCR, collectSrc, [])
   .option('--livereload <value>', ConsoleMessages.LIVERELOAD_HELP_DESCR)
   .option('--platforms <values>', ConsoleMessages.PLATFORMS_HELP_DESCR, splitPlatforms)
   .option('--monitor <values>', ConsoleMessages.MONITOR_HELP_DESCR)
