@@ -1,0 +1,6 @@
+-cp src
+-cp lib
+
+-js bin/js/main.js
+
+-main Main

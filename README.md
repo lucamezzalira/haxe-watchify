@@ -19,6 +19,27 @@ npm install haxe-watchify -g
 ```
 After that you'll be able to use haxe-watchify in any of your Haxe projects.
 
+## Options
+
+--program - Choose between haxe and openfl.   
+--hxml - hxml file to be run when files changed.  
+--compiler - haxe server or static file.  
+--port - port that haxe compiler will run on.   
+--src - folder which will be watched for changes. this option can be specified multiple timers.  
+--livereload - use livereloadx.
+  
+## Run Example
+
+```
+cd example
+```
+```
+haxe build.hxml
+```
+```
+../src/haxe-watchify.js --program haxe --src src --src lib --hxml build.hxml --compiler server
+```
+
 ## Note for Windows users
 
 **Haxe-watchify requires Python 2.7.x** to be installed in your machine in order to work.
